@@ -88,16 +88,9 @@ class UaeExporter:
         try:
             conn = sqlite3.connect(self.args.db_root)
             cur = conn.cursor()
-            cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-            print(cur.fetchall())
-
-            # cur.execute("SELECT *  FROM game")
-            # print(cur.fetchall())
+            print("Fetching data")
 
             rows = cur.fetchall()
-
-            for row in rows:
-                print(row)
 
             cur.execute(
                 """
@@ -194,7 +187,7 @@ class UaeExporter:
 
         tree = ET.ElementTree(root)
         tree.write(self.args.out_file, encoding='utf8',  method='xml')
-        print(ET.tostring(root, encoding='utf8', method='xml'))
+        print("File exported")
 
 
 exporter = UaeExporter()
