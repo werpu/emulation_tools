@@ -10,6 +10,7 @@ pyinstaller = "*"
 
 [packages]
 argparse = "*"
+regexp = "*"
 
 [requires]
 python_version = "3.7"
