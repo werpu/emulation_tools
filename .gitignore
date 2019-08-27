@@ -1,0 +1,6 @@
+Data
+dist/
+*.spec
+.idea/
+_install.sh
+build/
