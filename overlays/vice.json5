@@ -1,0 +1,35 @@
+/*
+A vice mapping overlay which exposes
+our core functionality (keyboard
+menu, quit, with the usual kombinations
+*/
+{
+  rules: [
+    {
+      from: "digital",
+      target_rules: [
+           //MODE XBOX BUTTON -> toggle menu
+           {
+             from_ev: "(EV_KEY), code 102 (KEY_HOME)",
+             replace: "all",
+             targets: [
+                {
+                  to: "eval1",
+                  to_ev: "(META), /home/werpu/gamepadservice/alt_b.py" //quit
+                }
+             ]
+           },
+           { //quit
+            from_ev: "(EV_KEY), code 62 (KEY_F4)",
+            replace: "all",
+            targets: [
+              {
+                 to: "eval1",
+                 to_ev: "(META), /home/werpu/gamepadservice/alt_q.py" //quit
+              }
+            ]
+          }
+       ]
+    }
+  ]
+}
