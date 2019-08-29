@@ -3,4 +3,5 @@ dist/
 *.spec
 .idea/
 _install.sh
+_setup.sh
 build/

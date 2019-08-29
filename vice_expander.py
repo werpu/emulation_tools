@@ -24,8 +24,20 @@ import zipfile
 import os
 import subprocess
 
+OTHER = "3"
+
+DISK_TAPE = "2"
+
+PRG = "1"
+
 
 class ViceExpander:
+    """
+        Vice expansion helper tool
+        vice does not allow to start multi disk programs from a zip file
+        this program expands the zips and then starts vice with the prg or first/disk tape.
+        Switchsets are not supported atm, but will be in the long run.
+    """
     def __init__(self):
         parser = argparse.ArgumentParser(description='Point to the image dir and db file')
 
@@ -69,7 +81,7 @@ class ViceExpander:
                     item["name"] = name
                     item["full_path"] = os.path.join(root, name)
                     item["sort_key"] = ViceExpander._resolve_sort(name) + "__" + name.lower()
-                    item["skip"] = ViceExpander._resolve_sort(name) == 3
+                    item["skip"] = ViceExpander._resolve_sort(name) == OTHER
                     contents.append(item)
 
             contents.sort(key=lambda sort_item: sort_item["sort_key"])
@@ -97,11 +109,11 @@ class ViceExpander:
     def _resolve_sort(name):
         name_lower = name.lower()
         if name_lower.endswith(".prg"):
-            return "1"
+            return PRG
         elif name_lower.endswith(".d64") or name_lower.endswith(".t64"):
-            return "2"
+            return DISK_TAPE
         else:
-            return "3"
+            return OTHER
 
 
 expander = ViceExpander()
