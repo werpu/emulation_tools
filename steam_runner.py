@@ -47,7 +47,7 @@ class SteamRunner:
     @staticmethod
     def is_starter_window(focus_window):
         decoded_str = focus_window.decode("utf-8").lower()
-        return "steam" in decoded_str or "wine" in decoded_str or "uae_exporter" in decoded_str
+        return "steam" in decoded_str or "wine64" in decoded_str or "uae_exporter" in decoded_str
 
 
 runner = SteamRunner()
