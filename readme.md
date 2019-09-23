@@ -1,4 +1,4 @@
-# A small exporter from the uae-launcher database to the emulation station xml
+# emulation tools
 
 This project is a set of smaller tools which ease the integrastion of emulators into
 starter uis like emulation station
@@ -27,4 +27,14 @@ and allows to start the vice emulator with the appropriate starter image automat
 
 Following arguments are required: *--vice_exe/-e, --expansion_path/-p, --game_file/-f*
 
+### steam_runner
+
+A helper program for emustation to start and kill steam or other launcher based
+programs and to return back to the emulation launcher after finishing
+the game
+
+## overlays
+
+A set of useful input/output overlays for the 
+input_pipe multiplexer
 
