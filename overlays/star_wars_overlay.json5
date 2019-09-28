@@ -1,0 +1,35 @@
+{
+  rules: [
+    {
+      from: "analog_left",
+      target_rules: [
+        {
+          from_ev: "(EV_ABS), code 1 (ABS_Y)",
+          targets: [
+            {
+              to: "translate",
+              to_ev: "(META), /home/werpu/gamepadservice/exponential_translate.py"
+            },
+            {
+              to: "xbox1",
+              to_ev: "(EV_ABS), code 1 (ABS_Y)"
+            }
+          ]
+        },
+        {
+          from_ev: "(EV_ABS), code 0 (ABS_X)",
+          targets: [
+            {
+              to: "translate",
+              to_ev: "(META), /home/werpu/gamepadservice/exponential_translate.py"
+            },
+            {
+              to: "xbox1",
+              to_ev: "(EV_ABS), code 0 (ABS_X)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
