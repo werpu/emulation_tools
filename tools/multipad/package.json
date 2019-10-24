@@ -1,0 +1,24 @@
+{
+  "name": "multipad",
+  "version": "0.0.1",
+  "description": "electron frontend for the variable keyboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-linux": "electron-packager .  multipad  --overwrite --platform=linux --arch=x64  --prune=true --out=release-builds",
+    "package-debian": "electron-installer-debian --src release-builds/multipad-linux-x64/ --arch amd64 --dest dist/debian",
+    "package-snap": "electron-installer-snap  --src release-builds/multipad-linux-x64  --dest dist/debian",
+    "build": "npm run package-linux && npm run package-debian"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.0.0",
+    "electron-installer-debian": "^2.0.1",
+    "electron-packager": "^14.0.6"
+  },
+  "dependencies": {
+    "babel-register": "^6.26.0"
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coleco</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/coleco-1p.css">
+
+</head>
+<body>
+
+
+<h1>Coleco Player 1</h1>
+
+<div class="wrap">
+    <div class="logo_1"></div>
+    <button class="equalHW" id="key1">1</button>
+    <button class="equalHW" id="key2">2</button>
+    <button class="equalHW" id="key3">3</button>
+
+    <button class="equalHW" id="key4">4</button>
+    <button class="equalHW" id="key5">5</button>
+    <button class="equalHW" id="key6">6</button>
+
+    <button class="equalHW" id="key7">7</button>
+    <button class="equalHW" id="key8">8</button>
+    <button class="equalHW" id="key9">9</button>
+
+    <button class="equalHW" id="key_asterisk">*</button>
+    <button class="equalHW" id="key0">0</button>
+    <button class="equalHW" id="key_hash">#</button>
+</div>
+
+<script type="text/javascript" src="remote_pipe.js"></script>
+<script type="text/javascript">
+
+    registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 2 (KEY_1), value 1");
+    registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 3 (KEY_2), value 1");
+    registerEventHandler("key3", "click", "keybd1", "(EV_KEY), code 4 (KEY_3), value 1");
+    registerEventHandler("key4", "click", "keybd1", "(EV_KEY), code 5 (KEY_4), value 1");
+    registerEventHandler("key5", "click", "keybd1", "(EV_KEY), code 6 (KEY_5), value 1");
+    registerEventHandler("key6", "click", "keybd1", "(EV_KEY), code 7 (KEY_6), value 1");
+    registerEventHandler("key7", "click", "keybd1", "(EV_KEY), code 8 (KEY_7), value 1");
+    registerEventHandler("key8", "click", "keybd1", "(EV_KEY), code 9 (KEY_8), value 1");
+    registerEventHandler("key9", "click", "keybd1", "(EV_KEY), code 10 (KEY_9), value 1");
+    registerEventHandler("key0", "click", "keybd1", "(EV_KEY), code 11 (KEY_0), value 1");
+    registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 55 (KEY_KPASTERISK), value 1");
+    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 51 (KEY_HASH), value 1");
+
+</script>
+</body>
+</html>

@@ -5,3 +5,5 @@ dist/
 _install.sh
 _setup.sh
 build/
+/tools/multipad/node_modules/
+/tools/multipad/release-builds/
