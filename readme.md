@@ -35,7 +35,7 @@ Allows to export fs-uae-starter data into a gamelist xml file which can be used 
 
 ### Usage
 
-* uae_exporter [-h] --img_root IMAGE_ROOT --db_root DB_ROOT --out OUT_FILE*
+* *uae_exporter* [-h] --img_root IMAGE_ROOT --db_root DB_ROOT --out OUT_FILE*
 
 * IMAGE_ROOT the root dir hosting all images of fs-uae-launcher
 * DB_ROOT the sqlite3 db file
@@ -49,7 +49,7 @@ A small utility which expands zipped c64 disk image sets into an expension direc
 and allows to start the vice emulator with the appropriate starter image automatically
 
 ### Usage
-* vice_expander [-h] --vice_exe EXE --expansion_path X_PATH --game_file GAME_FILE*
+* *vice_expander* [-h] --vice_exe EXE --expansion_path X_PATH --game_file GAME_FILE*
 
 Following arguments are required: *--vice_exe/-e, --expansion_path/-p, --game_file/-f*
 
@@ -72,11 +72,11 @@ The idea is to have an Electron based ui for every keyboard which needs to have 
 and then send the keystrokes to input_pipes emulated devices where the emulator picks them up correctly.
 
 ### Usage 
-* multipad &lt;emulated device&gt;
+* *multipad* &lt;emulated device&gt;
  
 Following devices are possible atm
 
-* coleco-1p a first player coleco input pad (which was hosted on the console on the controller, and having the digits 0-9 and asterisk and hash as special keys
+* *coleco-1p* a first player coleco input pad (which was hosted on the console on the controller, and having the digits 0-9 and asterisk and hash as special keys
 
 Additional inputs will follow
 
