@@ -7,3 +7,4 @@ _setup.sh
 build/
 /tools/multipad/node_modules/
 /tools/multipad/release-builds/
+/history/history.db
