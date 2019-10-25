@@ -1,7 +1,31 @@
 # emulation tools
 
 This project is a set of smaller tools which ease the integrastion of emulators into
-starter uis like emulation station
+starter uis like emulation station.
+
+This is basically a hodge podge of self written tools
+for a custom emulation station I have built 
+for others to pick up or use. Those tools
+mainly revolve around my main emulation project
+the [input_pipe multiplexer](https://www.github.com/werpu/input_pipe)
+Dont expect too much user friendliness with those tools
+they were developed for my own needs.
+Feel free to pull them adapt them and I would
+be happy to merge your changes in if they are useful.
+
+
+## Overlays
+
+A set of overlays for the input pipe,
+which can be take as blueprint for your own 
+specialized overlays.
+
+The idea is that [input_pipe](https://www.github.com/werpu/input_pipe)
+can have a basic input/output multiplexing configuration
+the overlays then provide specialized per application
+or emulator behavior which are layered on top of the existing 
+configuration.
+
 
 ## uae_exporter
 
@@ -33,17 +57,13 @@ A helper program for emustation to start and kill steam or other launcher based
 programs and to return back to the emulation launcher after finishing
 the game
 
-## overlays
-
-A set of useful input/output overlays for the 
-input_pipe multiplexer
 
 ## multipad
 
-This is an ongoing work into on screen displays which can be combined with the input_pipe multiplexer
-to send arbitrary commands from the keyboard into the emulated devices.
-The idea is to have specalized on screen keyboards which emulate the often abstruse
-input controls of early consoles and homecomputers, which are often mapped
+This is an ongoing work into on screen keyboards which can be combined with the [input_pipe multiplexers](https://www.github.com/werpu/input_pipe)
+remote control functionality to send arbitrary commands from the keyboard into the emulated devices.
+The idea is to have specialized on screen keyboards which emulate the often abstruse
+input controls of early consoles and home-computers, which are often mapped
 by emulators into special keys (and quite differently from emulator to emulator)
 
 The idea is to have an Electron based ui for every keyboard which needs to have special treatment
