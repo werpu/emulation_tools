@@ -38,3 +38,36 @@ the game
 A set of useful input/output overlays for the 
 input_pipe multiplexer
 
+## multipad
+
+This is an ongoing work into on screen displays which can be combined with the input_pipe multiplexer
+to send arbitrary commands from the keyboard into the emulated devices.
+The idea is to have specalized on screen keyboards which emulate the often abstruse
+input controls of early consoles and homecomputers, which are often mapped
+by emulators into special keys (and quite differently from emulator to emulator)
+
+The idea is to have an Electron based ui for every keyboard which needs to have special treatment
+and then send the keystrokes to input_pipes emulated devices where the emulator picks them up correctly.
+
+### Usage 
+*multipad <emulated device>
+ 
+Following devices are possible atm
+
+* coleco-1p a first player coleco input pad (which was hosted on the console on the controller, and having the digits 0-9 and asterisk and hash as special keys
+
+Additional inputs will follow
+
+### Installation
+
+Given the Electron nature of this application, the build produces native installation binaries.
+For now only a deb file is generated, whenever somone besides me wants to use it, we can talk abbout
+additional builds for instance rpm, snap etc...
+
+This is as well as input_pipe for the time being, linux only!
+
+  
+
+
+
+
