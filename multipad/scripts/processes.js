@@ -1,4 +1,4 @@
-const {spawn, execFileSync, execSync} = require('child_process');
+const {execFileSync} = require('child_process');
 
 class ProcessWindow {
     constructor(id, screen, program, descriptr) {
@@ -43,11 +43,10 @@ class Processes {
             if(line == "") {
                 return;
             }
-            let cols = line.split(/\s+/gi)
+            let cols = line.split(/\s+/gi);
 
-            this.processes.push(new ProcessWindow(cols[0], cols[1], cols[2], line))
-
-        })
+            this.processes.push(new ProcessWindow(cols[0], cols[1], cols[2], line));
+        });
     }
 
     forEach(func) {
@@ -60,4 +59,4 @@ class Processes {
 }
 
 
-module.exports = {Processes: Processes}
+module.exports = {Processes: Processes};

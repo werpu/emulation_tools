@@ -1,0 +1,25 @@
+/*
+Coleco overlay,
+by pressing the usual on screen keyboard button
+a specialized coleco keyboard is displayed instead
+of the default florence keyboard
+*/
+{
+  rules: [
+    {
+      from: "analog_left",
+      target_rules: [
+        //front ro third button left
+        {
+          from_ev: "(EV_KEY), code 292 (BTN_TOP2)",
+          targets: [
+            {
+              to: "eval1",
+              to_ev: "(META), ./a5200-key.py"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
