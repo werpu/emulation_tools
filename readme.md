@@ -8,8 +8,10 @@ for a custom emulation station I have built
 for others to pick up or use. Those tools
 mainly revolve around my main emulation project
 the [input_pipe multiplexer](https://www.github.com/werpu/input_pipe)
-Dont expect too much user friendliness with those tools
-they were developed for my own needs.
+Dont expect too much user friendliness with those tools!
+
+They were developed for my own needs.
+
 Feel free to pull them adapt them and I would
 be happy to merge your changes in if they are useful.
 
