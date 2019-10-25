@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coleco</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/coleco-1p.css">
+
+</head>
+<body>
+
+
+<h1>Coleco Player 1</h1>
+
+<div class="wrap">
+    <div class="logo_1"></div>
+    <button class="equalHW" id="key1">1</button>
+    <button class="equalHW" id="key2">2</button>
+    <button class="equalHW" id="key3">3</button>
+
+    <button class="equalHW" id="key4">4</button>
+    <button class="equalHW" id="key5">5</button>
+    <button class="equalHW" id="key6">6</button>
+
+    <button class="equalHW" id="key7">7</button>
+    <button class="equalHW" id="key8">8</button>
+    <button class="equalHW" id="key9">9</button>
+
+    <button class="equalHW" id="key_asterisk">*</button>
+    <button class="equalHW" id="key0">0</button>
+    <button class="equalHW" id="key_hash">#</button>
+</div>
+
+<script type="text/javascript" src="../scripts/remote_pipe.js"></script>
+<script type="text/javascript">
+
+    registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 79 (KEY_KP1), value 1", ["MAME"]);
+    registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 80 (KEY_KP2), value 1", ["MAME"]);
+    registerEventHandler("key3", "click", "keybd1", "(EV_KEY), code 81 (KEY_KP3), value 1", ["MAME"]);
+    registerEventHandler("key4", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP4), value 1", ["MAME"]);
+    registerEventHandler("key5", "click", "keybd1", "(EV_KEY), code 83 (KEY_KP5), value 1", ["MAME"]);
+    registerEventHandler("key6", "click", "keybd1", "(EV_KEY), code 77 (KEY_KP6), value 1", ["MAME"]);
+    registerEventHandler("key7", "click", "keybd1", "(EV_KEY), code 71 (KEY_KP7), value 1", ["MAME"]);
+    registerEventHandler("key8", "click", "keybd1", "(EV_KEY), code 72 (KEY_KP8), value 1", ["MAME"]);
+    registerEventHandler("key9", "click", "keybd1", "(EV_KEY), code 73 (KEY_KP9), value 1", ["MAME"]);
+    registerEventHandler("key0", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP0), value 1", ["MAME"]);
+    registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 55 (KEY_KPASTERISK), value 1", ["MAME"]);
+    //registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 51 (KEY_HASH), value 1", "MAME");
+    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 74 (KEY_KPMINUS), value 1", ["MAME"]);
+
+</script>
+</body>
+</html>

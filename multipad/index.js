@@ -20,8 +20,8 @@ function createWindow() {
             nodeIntegration: true
         }
     })
-    window.loadFile(system+'.html');
-//    window.webContents.openDevTools();
+    window.loadFile("html/"+system+'.html');
+    window.webContents.openDevTools();
 }
 
 
