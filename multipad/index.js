@@ -15,6 +15,7 @@ function createWindow() {
         alwaysOnTop: true,
         title: system,
         autoHideMenuBar: true,
+        titleBarStyle: "hidden",
         webPreferences: {
             nodeIntegration: true
         }

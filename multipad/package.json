@@ -17,7 +17,8 @@
   "devDependencies": {
     "electron": "^7.0.0",
     "electron-installer-debian": "^2.0.1",
-    "electron-packager": "^14.0.6"
+    "electron-packager": "^14.0.6",
+    "node-process-windows": "0.0.2"
   },
   "dependencies": {
     "babel-register": "^6.26.0"
