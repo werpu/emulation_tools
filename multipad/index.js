@@ -21,7 +21,7 @@ function createWindow() {
         }
     })
     window.loadFile(system+'.html');
-    //window.webContents.openDevTools();
+//    window.webContents.openDevTools();
 }
 
 
