@@ -20,14 +20,14 @@ class OSKeyHandler:
     def pad_exists():
         p = None
         for proc in psutil.process_iter():
-            if proc.as_dict(attrs=["name"])["name"] == "atari5200":
+            if proc.as_dict(attrs=["name"])["name"] == "multipad":
                 p = proc
                 break
         return p
 
     def start_pad(self):
         if self.pad_exists() is None:
-            os.system("multipad  coleco-1p &")
+            os.system("multipad  atari5200 &")
 
     def toggle_pad(self):
         if self.pad_exists() is None:

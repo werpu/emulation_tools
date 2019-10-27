@@ -1,0 +1,18 @@
+body {
+    background-image: url(../images/1280px-Atari-5200-4-Port-wController-L.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+h1 {
+    color: #990a1e;
+    font-size: 60px;
+    padding-left: 20px;
+}
+
+.wrap {
+    display: block;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 200px);
+}

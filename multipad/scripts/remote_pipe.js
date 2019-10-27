@@ -8,7 +8,7 @@ function connect() {
     });
 }
 
-function registerEventHandler(id, id_evt, target, event, windowPattern) {
+function registerEventHandler(id, id_evt, target, event, windowPattern, longRun) {
     document.getElementById(id).addEventListener("click", () => {
         focus(windowPattern);
 
@@ -18,7 +18,8 @@ function registerEventHandler(id, id_evt, target, event, windowPattern) {
         client.write(["trigger_input",
             JSON.stringify({
                 to: target,
-                event: event
+                event: event,
+                long:  "" + !!longRun
             })
         ].join(" "));
         setTimeout(() => focus(["multipad"]), 1000)

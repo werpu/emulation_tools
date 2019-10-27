@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>Atari 5200</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/coleco-1p.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/a5200.css">
 
 </head>
 <body>
 
 
-<h1>Coleco Player 1</h1>
+<h1><img src="../assets/images/Atari_games_logo.svg" height="40"> Atari 5200</h1>
 
-<div class="wrap">
-    <div class="logo_1"></div>
+<div class="wrap col_50">
+
     <button class="equalHW" id="key1">1</button>
     <button class="equalHW" id="key2">2</button>
     <button class="equalHW" id="key3">3</button>
@@ -30,6 +31,21 @@
     <button class="equalHW" id="key_hash">#</button>
 </div>
 
+<div class="wrap col_50 last">
+
+    <button class="equalHW" id="key21">Menu</button>
+    <button class="equalHW" id="key22">Pause</button>
+    <button class="equalHW" id="key23">FPS</button>
+
+    <button class="equalHW" id="key24">Reset</button>
+    <button class="equalHW" id="key25">Toggle FS</button>
+    <button class="equalHW" id="key26">Off</button>
+
+
+</div>
+
+
+
 <script type="text/javascript" src="../scripts/remote_pipe.js"></script>
 <script type="text/javascript">
 
@@ -43,9 +59,27 @@
     registerEventHandler("key8", "click", "keybd1", "(EV_KEY), code 72 (KEY_KP8), value 1", ["retroarch","MAME","atari"]);
     registerEventHandler("key9", "click", "keybd1", "(EV_KEY), code 73 (KEY_KP9), value 1", ["retroarch","MAME","atari"]);
     registerEventHandler("key0", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP0), value 1", ["retroarch","MAME","atari"]);
-    //registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 78 (KEY_KPPLUS), value 1", "MAME");
+    //registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 78 (KEY_KPPLUS), value 1", ["retroarch","MAME","atari"]);
     //registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 51 (KEY_HASH), value 1", "MAME");
-    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 13 (KEY_EQUAL), value 1", "MAME");
+    registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 55 (KEY_KPASTERISK), value 1", ["retroarch","MAME","atari"]);
+    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 13 (KEY_EQUAL), value 1", ["retroarch","MAME","atari"]);
+
+    //function keys, right
+    //f1 - Menu
+    registerEventHandler("key21", "click", "keybd1", "(EV_KEY), code 59 (KEY_F1), value 1", ["retroarch","MAME","atari"]);
+    //p - Pause
+    registerEventHandler("key22", "click", "keybd1", "(EV_KEY), code 25 (KEY_P), value 1", ["retroarch","MAME","atari"]);
+    // F3 - FPS
+    registerEventHandler("key23", "click", "keybd1", "(EV_KEY), code 61 (KEY_F3), value 1", ["retroarch","MAME","atari"]);
+    //reset - F4
+    registerEventHandler("key24", "click", "keybd1", "(EV_KEY), code 63 (KEY_F5), value 1", ["retroarch","MAME","atari"]);
+    //TOGGLE FS
+    registerEventHandler("key25", "click", "keybd1", "(EV_KEY), code 33 (KEY_F), value 1", ["retroarch","MAME","atari"]);
+    //off
+    registerEventHandler("key26", "click", "keybd1", "(EV_KEY), code 62 (KEY_F4), value 1", ["retroarch","MAME","atari"]);
+
+
+
 
 </script>
 </body>

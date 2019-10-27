@@ -15,7 +15,7 @@ of the default florence keyboard
           targets: [
             {
               to: "eval1",
-              to_ev: "(META), ./a5200-key.py"
+              to_ev: "(META), /home/werpu/gamepadservice/a5200-key.py"
             }
           ]
         }

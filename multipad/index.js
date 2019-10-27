@@ -14,6 +14,7 @@ function createWindow() {
         height: 600,
         alwaysOnTop: true,
         title: system,
+        //frame: false,
         autoHideMenuBar: true,
         titleBarStyle: "hidden",
         webPreferences: {
@@ -21,7 +22,7 @@ function createWindow() {
         }
     })
     window.loadFile("html/"+system+'.html');
-    window.webContents.openDevTools();
+    //window.webContents.openDevTools();
 }
 
 
@@ -36,7 +37,7 @@ app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
-        app.quit()
+        asystempp.quit()
     }
 });
 
