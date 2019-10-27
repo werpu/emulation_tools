@@ -10,8 +10,10 @@ var system = arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p
 
 function createWindow() {
     window = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 500,
+        x: 0,
+        y: 0,
         alwaysOnTop: true,
         title: system,
         //frame: false,
