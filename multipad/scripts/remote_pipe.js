@@ -8,7 +8,7 @@ function connect() {
     });
 }
 
-function registerEventHandler(id, id_evt, target, event, windowPattern, longRun) {
+function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
     document.getElementById(id).addEventListener("click", () => {
         focus(windowPattern);
 
@@ -22,6 +22,9 @@ function registerEventHandler(id, id_evt, target, event, windowPattern, longRun)
                 long:  "" + !!longRun
             })
         ].join(" "));
+        if(additionalExecute) {
+            additionalExecute();
+        }
         setTimeout(() => focus(["multipad"]), 1000)
     });
 
@@ -37,6 +40,11 @@ function focus(windowNamePattern) {
             return false;
         }
     });
+}
+
+function kill_me() {
+    const {exec} = require('child_process');
+    exec("killall multipad")
 }
 
 connect();

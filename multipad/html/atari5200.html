@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/coleco-1p.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/a5200.css">
 
+
+
 </head>
 <body>
 
@@ -49,6 +51,7 @@
 <script type="text/javascript" src="../scripts/remote_pipe.js"></script>
 <script type="text/javascript">
 
+
     registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 79 (KEY_KP1), value 1", ["retroarch","MAME","atari"]);
     registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 80 (KEY_KP2), value 1", ["retroarch","MAME","atari"]);
     registerEventHandler("key3", "click", "keybd1", "(EV_KEY), code 81 (KEY_KP3), value 1", ["retroarch","MAME","atari"]);
@@ -76,7 +79,7 @@
     //TOGGLE FS
     registerEventHandler("key25", "click", "keybd1", "(EV_KEY), code 33 (KEY_F), value 1", ["retroarch","MAME","atari"]);
     //off
-    registerEventHandler("key26", "click", "keybd1", "(EV_KEY), code 62 (KEY_F4), value 1", ["retroarch","MAME","atari"]);
+    registerEventHandler("key26", "click", "keybd1", "(EV_KEY), code 62 (KEY_F4), value 1", ["retroarch","MAME","atari"], false, kill_me);
 
 
 
