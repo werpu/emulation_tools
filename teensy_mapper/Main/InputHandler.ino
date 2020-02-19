@@ -42,10 +42,15 @@ int yHatValueToAngle(int value) {
   return handleCornerConditions(oldYAngle);
 }
 
+void noop() {
+  
+}
 /*
  * Joystick signal transformation
  */
 boolean handleJoySignals(int ev_type, int value) {
+  (value == 1 || value == -1) && ev_type != SYN ? digitalWrite(led, HIGH) : 
+    ((value == 0 && ev_type != SYN) ? digitalWrite(led, LOW) : noop());
   switch (ev_type) {
     case HAT_0Y:
       Joystick.hat(yHatValueToAngle(value));
@@ -56,7 +61,6 @@ boolean handleJoySignals(int ev_type, int value) {
       return true;
   
     case BTN_SOUTH:
-      Serial.print(value);
       Joystick.button(2, value);
       return true;
   

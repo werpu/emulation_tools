@@ -2,7 +2,7 @@
 #include "SerialStream.h"
 
 SerialStream *strm;
-
+int led = 13;
 // the setup routine runs once when you press reset:
 void setup() {
 
