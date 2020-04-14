@@ -1,0 +1,48 @@
+body {
+    background-image: url(../images/Commodore-64-Computer-FL.png);
+    padding: 10px;
+}
+
+.wrap {
+    display: block;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 120px);
+}
+
+.equalHW {
+    display: inline-block;
+    width: 6.1%;
+    height: calc(100% - 5px);
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 2px 0px;
+    display: inline-block;
+    min-height: 60px;
+    vertical-align: text-top;
+}
+
+.top {
+    height: 3em;
+    margin-bottom: 20px;
+    width: calc(100vw - 30px);
+}
+
+.top .equalHW {
+    width: 3em;
+}
+
+.equalHW.full {
+    width: 93%;
+    margin-left: 2.5%;
+    margin-top: 20px;
+}
+
+.equalHW.sm {
+    width: 3.1%;
+}
+
+.equalHW.big {
+    width: 12.1%;
+}

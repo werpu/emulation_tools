@@ -1,0 +1,55 @@
+body {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+.wrap {
+    display: block;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 120px);
+}
+
+.equalHW {
+    display: inline-block;
+    width: calc(32% - 20px);
+    height: calc(25% - 20px);
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.equalHW:active {
+    background-color: #6297ff;
+    z-index: 2;
+}
+
+body {
+    background-color: #999999;
+}
+
+h1 {
+    color: azure;
+}
+
+
+.col_90 {
+    width: 90%;
+}
+
+.col_90 {
+    width: 10%;
+}
+
+.d_block {
+    display: block;
+}
+
+.ft_sm {
+    font-size: 0.8em !important;
+}
+
+.pull_right {
+    float: right;
+}
