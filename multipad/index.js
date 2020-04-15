@@ -1,4 +1,5 @@
-const {app, BrowserWindow, remote} = require('electron')
+const {app, BrowserWindow, remote} = require('electron');
+const path = require('path');
 var arguments = process.argv;
 
 
@@ -17,6 +18,10 @@ const system = isStringArgs && arguments.length > 1 ? arguments[arguments.length
  */
 function createWindow() {
     window = new BrowserWindow({
+        webPreferences: {
+
+            preload: path.join(app.getAppPath(), 'preload.js')
+        },
         /*raspberry pi screen size*/
         width: 800,
         height: 480,
@@ -27,11 +32,10 @@ function createWindow() {
         //frame: false,
         autoHideMenuBar: true,
         titleBarStyle: "hidden",
-        webPreferences: {
-            nodeIntegration: true
-        }
+        nodeIntegration: true
+
     })
-    window.loadFile("html/"+system+'.html');
+    window.loadFile(path.join(app.getAppPath(),"html/"+system+'.html'));
     //window.webContents.openDevTools();
 }
 

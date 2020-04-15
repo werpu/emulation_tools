@@ -1,4 +1,3 @@
-const {execFileSync} = require('child_process');
 
 class ProcessWindow {
     constructor(id, screen, program, descriptr) {

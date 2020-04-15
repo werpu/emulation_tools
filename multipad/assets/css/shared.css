@@ -53,3 +53,25 @@ h1 {
 .pull_right {
     float: right;
 }
+
+.hidden {
+    display: none;
+}
+
+x-navigation {
+    display: block;
+    margin-bottom: 20px;
+}
+
+x-navigation button {
+    font-size: 1.2em;
+    margin-right: 0.2em;
+}
+
+x-navigation button.active {
+    background-color: transparent;
+    border: none;
+    color: darkblue;
+    float: right;
+    font-weight: bold;
+}
