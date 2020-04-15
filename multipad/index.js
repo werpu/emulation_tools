@@ -5,7 +5,11 @@ var arguments = process.argv;
 let window;
 
 console.log("args", arguments[1])
-const system = arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
+
+let isStringArgs =  arguments.length && typeof arguments[0] === 'string' || arguments[0] instanceof String;
+
+
+const system = isStringArgs && arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
 
 
 /**
