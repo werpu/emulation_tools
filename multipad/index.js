@@ -5,13 +5,17 @@ var arguments = process.argv;
 let window;
 
 console.log("args", arguments[1])
-var system = arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
+const system = arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
 
 
+/**
+ * open a fake fullscreen window
+ */
 function createWindow() {
     window = new BrowserWindow({
-        width: 1024,
-        height: 500,
+        /*raspberry pi screen size*/
+        width: 800,
+        height: 480,
         x: 0,
         y: 0,
         alwaysOnTop: true,

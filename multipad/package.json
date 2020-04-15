@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.0.0",
+    "electron": "^7.1.9",
     "electron-installer-debian": "^2.0.1",
     "electron-packager": "^14.0.6",
     "lodash": "^4.17.15",
