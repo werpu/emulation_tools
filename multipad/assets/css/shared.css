@@ -35,11 +35,18 @@ h1 {
 
 
 .col_90 {
-    width: 90%;
+    width: 90% !important;
+    float: left;
 }
 
-.col_90 {
-    width: 10%;
+.col_10 {
+    width: 10% !important;
+    float: left;
+}
+
+.col_50 {
+    width: 50% !important;
+    float: left;
 }
 
 .d_block {
