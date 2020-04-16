@@ -82,3 +82,7 @@ x-navigation button.active {
     float: right;
     font-weight: bold;
 }
+
+button.toggled {
+    background-color: red;
+}

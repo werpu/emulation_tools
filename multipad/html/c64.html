@@ -124,7 +124,9 @@
 <script type="text/javascript" src="../scripts/navigation.js"></script>
 <script type="text/javascript" src="../scripts/remote_pipe.js"></script>
 <script type="text/javascript">
-
+    registerLayerSwitch("keyshift", "layer1", "layer2", false);
+    registerLayerSwitch("keyshift2", "layer1", "layer2", false);
+    registerLayerSwitch("keyshiftlock", "layer1", "layer2", true);
 
     registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 79 (KEY_KP1), value 1", ["retroarch", "MAME", "atari", "mister"]);
     registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 80 (KEY_KP2), value 1", ["retroarch", "MAME", "atari", "mister"]);
