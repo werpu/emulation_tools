@@ -51,9 +51,7 @@ function registerLayerSwitch(id, fromLayer, toLayer, isStatic) {
             shifted = false;
             toggleLayers(toLayerEl, fromLayerEl);
          });
-
     }
-
 }
 
 
