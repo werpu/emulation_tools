@@ -1,4 +1,7 @@
-
+/**
+ * Window processor which should detect the keyboard window and focus it upon open
+ * can only work on linux because it uses wmctl hence we fail silently for now
+ */
 class ProcessWindow {
     constructor(id, screen, program, descriptr) {
         this.id = id;
@@ -8,19 +11,27 @@ class ProcessWindow {
     }
 
     focus() {
-        execFileSync("wmctrl", ["-ia", this.id]);
+        try {
+            execFileSync("wmctrl", ["-ia", this.id]);
+        } catch(e) {}
     }
 
     moveHere() {
-        execFileSync("wmctrl", ["-iR", this.id]);
+        try {
+            execFileSync("wmctrl", ["-iR", this.id]);
+        } catch(e) {}
     }
 
     close() {
-        execFileSync("wmctrl", ["-ic", this.id]);
+        try {
+            execFileSync("wmctrl", ["-ic", this.id]);
+        } catch(e) {}
     }
 
      changeState(starg) {
-        execFileSync("wmctrl", ["-ir", this.id, "-b", starg]);
+        try {
+            execFileSync("wmctrl", ["-ir", this.id, "-b", starg]);
+        } catch(e) {}
     }
 }
 
@@ -31,8 +42,15 @@ class Processes {
 
 
     constructor() {
+        let exec;
+        try {
+            exec = execFileSync("wmctrl", ["-lx"]);
+        } catch (e) {
+            this.processes = [];
+            console.log("wmctl not found, not a linux system, turning off linux specific handlers");
+            return;
+        }
 
-        const exec = execFileSync("wmctrl", ["-lx"]);
         let str = exec.toString();
         let lines = str.split(/\n+/gi);
 

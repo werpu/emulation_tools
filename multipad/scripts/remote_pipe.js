@@ -3,7 +3,7 @@
 const client = new net.Socket();
 
 function connect() {
-    client.connect(9002, '127.0.0.1', function () {
+    client.connect(9002, '10.0.0.50', function () {
         console.log('Connected');
     });
 }
