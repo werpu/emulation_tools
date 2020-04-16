@@ -33,7 +33,7 @@
 
 <div class="wrap">
 
-    <div class="d_block">
+    <div class="d_block layer1">
         <button class="equalHW" id="bspcd">&larr;</button>
         <button class="equalHW" id="key1" data-key-code="KEY_1">1</button>
         <button class="equalHW" id="key2" data-key-code="KEY_2">2</button>
@@ -49,6 +49,10 @@
         <button class="equalHW" id="keyminus" data-key-code="KEY_KPMINUS">-</button>
         <button class="equalHW" id="keypound" data-key-code="KEY_DOLLAR">&#163;</button>
         <button class="equalHW ft_sm" id="clr" data-key-code="KEY_HOME">CLR HOME</button>
+    </div>
+    <div class="d-block layer2 hidden">
+        <button class="equalHW" id="key_1shift" data-key-code="KEY_1" data-meta-key-code="KEY_SHIFT">!</button>
+
     </div>
 
     <!-- next row -->
@@ -124,11 +128,12 @@
 <script type="text/javascript" src="../scripts/remote_pipe.js"></script>
 <script type="text/javascript">
 
-
+setTimeout(() => {
     registerLayerSwitch("keyshift", "layer1", "layer2", false);
     registerLayerSwitch("keyshift2", "layer1", "layer2", false);
     registerLayerSwitch("keyshiftlock", "layer1", "layer2", true);
 
+}, 500);
 
 </script>
 </body>

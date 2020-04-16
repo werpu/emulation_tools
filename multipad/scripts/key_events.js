@@ -124,7 +124,14 @@ class KeyCodes {
 
     static initKeys() {
         DomQuery.querySelectorAll("button[data-key-code]").each(item => {
-            registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[item.attr("data-key-code").value] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+
+            let keyCode = item.attr("data-key-code").value;
+            if(item.attr("data-meta-key-code")) {
+                let meta = item.attr("data-meta-key-code").value;
+                registerMetaEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode] + ", value 1", KeyCodes[meta] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+            } else {
+                registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+            }
         });
     }
 }

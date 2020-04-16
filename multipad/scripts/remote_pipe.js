@@ -7,8 +7,11 @@ function connect() {
 }
 
 function toggleLayers(currentLayer, nextLayer) {
-    currentLayer.addClass("hidden");
-    nextLayer.removeClass("hidden");
+    let currentLayerEl = DomQuery.querySelectorAll("." + currentLayer);
+    let nextLayerEl = DomQuery.querySelectorAll("." + nextLayer);
+
+    currentLayerEl.addClass("hidden");
+    nextLayerEl.removeClass("hidden");
 }
 
 /**
@@ -21,11 +24,9 @@ function toggleLayers(currentLayer, nextLayer) {
  * @param isStatic static means... that it is toggled permanently on click, otherwise it is only activated until released
  */
 function registerLayerSwitch(id, fromLayer, toLayer, isStatic) {
-    const element = DomQuery.byId(id);
-    const fromLayerEl = DomQuery.querySelectorAll("." + fromLayer);
-    const fromLayerExists = !!fromLayerEl.length;
-    const toLayerEl = DomQuery.querySelectorAll("." + toLayer);
-    const toLayerExists = !!toLayerEl.length;
+    let element = DomQuery.byId(id);
+    let toLayerEl = DomQuery.querySelectorAll("." + toLayer);
+    let toLayerExists = !!toLayerEl.length;
     let shifted = false;
 
     if (isStatic) {
@@ -33,24 +34,24 @@ function registerLayerSwitch(id, fromLayer, toLayer, isStatic) {
             if (!shifted) {
                 shifted = true;
                 DomQuery.byId(el.target).addClass("toggled");
-                toggleLayers(fromLayerEl, toLayerEl);
+                toggleLayers(fromLayer, toLayer);
             } else if (toLayerExists) {
                 shifted = false;
                 DomQuery.byId(el.target).removeClass("toggled");
-                toggleLayers(toLayerEl, fromLayerEl);
+                toggleLayers(toLayer, fromLayer);
             }
         });
     } else {
         element.addEventListener("mousedown", (el) => {
             shifted = true;
 
-            toggleLayers(fromLayerEl, toLayerEl);
+            toggleLayers(fromLayer, toLayer);
         });
 
-         element.addEventListener("mouseup", () => {
+        element.addEventListener("mouseup", () => {
             shifted = false;
-            toggleLayers(toLayerEl, fromLayerEl);
-         });
+            toggleLayers(toLayer, fromLayer);
+        });
     }
 }
 
@@ -76,6 +77,36 @@ function registerEventHandler(id, id_evt, target, event, windowPattern, longRun,
     });
 
 }
+
+function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
+    DomQuery.byId(id).addEventListener("click", () => {
+        focus(windowPattern);
+
+        if (client.destroyed) {
+            connect();
+        }
+        client.write(["trigger_input",
+            JSON.stringify({
+                to: target,
+                event: event,
+                long: "" + !!longRun
+            })
+        ].join(" "));
+        client.write(["trigger_input",
+            JSON.stringify({
+                to: target,
+                event: metaEvent,
+                long: "" + !!longRun
+            })
+        ].join(" "));
+        if (additionalExecute) {
+            additionalExecute();
+        }
+        setTimeout(() => focus(["multipad"]), 1000)
+    });
+
+}
+
 
 function focus(windowNamePattern) {
     const processes = new Processes();

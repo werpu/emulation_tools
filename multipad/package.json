@@ -12,22 +12,20 @@
     "package-linux-arm": "electron-packager .  multipad  --overwrite --platform=linux --arch=armv7l  --prune=true --out=release-builds",
     "package-debian": "electron-installer-debian --src release-builds/multipad-linux-x64/ --arch amd64 --dest dist/debian",
     "package-snap": "electron-installer-snap  --src release-builds/multipad-linux-x64  --dest dist/debian",
-
     "build": "npm run package-linux && npm run package-debian",
     "setup": "npm run build && ./install.sh"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.1.9",
-    "electron-installer-debian": "^2.0.1",
-    "electron-packager": "^14.0.6",
+    "electron": "^8.2.2",
+    "electron-installer-debian": "^3.0.0",
+    "electron-packager": "^14.2.1",
     "lodash": "^4.17.15",
-    "node-process-windows": "0.0.2",
-    "mona-dish": "^0.13.4"
+    "mona-dish": "^0.13.7",
+    "node-process-windows": "0.0.2"
   },
   "dependencies": {
     "babel-register": "^6.26.0"
-
   }
 }
