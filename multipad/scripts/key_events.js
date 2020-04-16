@@ -117,6 +117,7 @@ class KeyCodes {
 
     static KEY_NUMLOCK = "(EV_KEY), code 69 (KEY_NUMLOCK)";
     static KEY_SCROLLOCK = "(EV_KEY), code 70 (KEY_SCROLLOCK)";
+    static KEY_DOLLAR = "(EV_KEY), code 434 (KEY_DOLLAR)";
 
     //pipe (alt modifier ?)
     static KEY_102ND = "(EV_KEY), code 86 (KEY_102ND)";
@@ -126,7 +127,6 @@ class KeyCodes {
             registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[item.attr("data-key-code").value] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
         });
     }
-
 }
 
 /*automatic registration triggered for everything which has a data-key-code*/
