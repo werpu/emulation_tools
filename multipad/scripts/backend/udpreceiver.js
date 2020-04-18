@@ -1,9 +1,9 @@
 const {AssocArrayCollector, Stream} = require("mona-dish");
 
-let PORT = 12345;
-
-let dgram = require('dgram');
-let server = dgram.createSocket('udp4');
+const PORT = 12345;
+const ALLOWED_MS = 20000;
+const dgram = require('dgram');
+const server = dgram.createSocket('udp4');
 
 class ReceiverData {
     ip;
@@ -37,14 +37,12 @@ server.on('message', function (message, remote) {
     } else {
         receivers[recKey] = new ReceiverData(data.ip, data.port);
     }
-    //everything older than 15 seconds will be cleared
-    receivers = Stream.ofAssoc(receivers)
-        .filter(data => {
-            return currTime.getTime() - data[1].lastHeardFrom.getTime() < 20000;
-        })
-        .collect(new AssocArrayCollector());
 
-    global.sharedObj["receivers"] = receivers;
+    //everything older than 15 seconds will be cleared
+    global.sharedObj["receivers"] = Stream.ofAssoc(receivers)
+        //4 strikes and the server is out
+        .filter(data => currTime.getTime() - data[1].lastHeardFrom.getTime() < ALLOWED_MS)
+        .collect(new AssocArrayCollector());
 
     console.log(remote.address + ':' + remote.port + ' - ' + data.ip + ":" + data.port);
 
