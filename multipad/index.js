@@ -6,19 +6,22 @@
  */
 const {app, BrowserWindow, remote} = require('electron');
 const path = require('path');
-var arguments = process.argv;
+const arguments = process.argv;
 
 
-let window;
-
-console.log("args", arguments[1])
-
-let isStringArgs =  arguments.length && typeof arguments[0] === 'string' || arguments[0] instanceof String;
-
-
+const isStringArgs =  arguments.length && typeof arguments[0] === 'string' || arguments[0] instanceof String;
 const system = isStringArgs && arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
 
-global.sharedObj = {prop1: "hi"};
+
+let _sharedObj = {prop1: "hi"};
+
+Object.defineProperty(global, 'sharedObj', {
+  get() { return _sharedObj },
+  set(value) { _sharedObj = value }
+})
+
+
+
 /**
  * open a fake fullscreen window
  */
