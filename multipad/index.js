@@ -1,3 +1,9 @@
+/**
+ * main index.js, this is basically
+ * just a starter for the main window with all needed hooks in place
+ * the rest is done in the browser itself once needed
+ * or by preload to preinit values
+ */
 const {app, BrowserWindow, remote} = require('electron');
 const path = require('path');
 var arguments = process.argv;

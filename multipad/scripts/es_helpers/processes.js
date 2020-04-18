@@ -2,7 +2,7 @@
  * Window processor which should detect the keyboard window and focus it upon open
  * can only work on linux because it uses wmctl hence we fail silently for now
  */
-class ProcessWindow {
+export class ProcessWindow {
     constructor(id, screen, program, descriptr) {
         this.id = id;
         this.screen = screen;
@@ -38,7 +38,7 @@ class ProcessWindow {
 /**
  * Generic process handler class sitting on wmTool
  */
-class Processes {
+export class Processes {
 
 
     constructor() {
@@ -75,5 +75,3 @@ class Processes {
     }
 }
 
-
-module.exports = {Processes: Processes};

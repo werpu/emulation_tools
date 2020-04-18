@@ -1,62 +1,15 @@
+import {Processes} from "./es_helpers/processes.js";
+
 const client = new net.Socket();
 
-function connect() {
+export function connect() {
     client.connect(9002, '10.0.1.50', function () {
         console.log('Connected');
     });
 }
 
-function toggleLayers(currentLayer, nextLayer) {
-    let currentLayerEl = DomQuery.querySelectorAll("." + currentLayer);
-    let nextLayerEl = DomQuery.querySelectorAll("." + nextLayer);
 
-    currentLayerEl.addClass("hidden");
-    nextLayerEl.removeClass("hidden");
-}
-
-/**
- * layer switcher
- *
- * allows to swith from one to another layer
- * @param the element id which has to react
- * @param fromLayer from layer style marker
- * @param toLayer to layer style marker
- * @param isStatic static means... that it is toggled permanently on click, otherwise it is only activated until released
- */
-function registerLayerSwitch(id, fromLayer, toLayer, isStatic) {
-    let element = DomQuery.byId(id);
-    let toLayerEl = DomQuery.querySelectorAll("." + toLayer);
-    let toLayerExists = !!toLayerEl.length;
-    let shifted = false;
-
-    if (isStatic) {
-        element.addEventListener("click", (el) => {
-            if (!shifted) {
-                shifted = true;
-                DomQuery.byId(el.target).addClass("toggled");
-                toggleLayers(fromLayer, toLayer);
-            } else if (toLayerExists) {
-                shifted = false;
-                DomQuery.byId(el.target).removeClass("toggled");
-                toggleLayers(toLayer, fromLayer);
-            }
-        });
-    } else {
-        element.addEventListener("mousedown", (el) => {
-            shifted = true;
-
-            toggleLayers(fromLayer, toLayer);
-        });
-
-        element.addEventListener("mouseup", () => {
-            shifted = false;
-            toggleLayers(toLayer, fromLayer);
-        });
-    }
-}
-
-
-function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
+export function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
     DomQuery.byId(id).addEventListener("click", () => {
         focus(windowPattern);
 
@@ -78,7 +31,7 @@ function registerEventHandler(id, id_evt, target, event, windowPattern, longRun,
 
 }
 
-function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
+export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
     DomQuery.byId(id).addEventListener("click", () => {
         focus(windowPattern);
 
@@ -108,7 +61,7 @@ function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPa
 }
 
 
-function focus(windowNamePattern) {
+export function focus(windowNamePattern) {
     const processes = new Processes();
 
     windowNamePattern.forEach((name) => {
@@ -120,7 +73,7 @@ function focus(windowNamePattern) {
     });
 }
 
-function kill_me() {
+export function kill_me() {
     const {exec} = require('child_process');
     exec("killall multipad")
 }

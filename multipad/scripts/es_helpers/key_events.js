@@ -1,4 +1,6 @@
-class KeyCodes {
+import {registerMetaEventHandler, registerEventHandler} from "../remote_pipe.js";
+
+export class KeyCodes {
     static KEY_ESC = "(EV_KEY), code 1 (KEY_ESC)";
 
     /*function keys*/
@@ -135,7 +137,4 @@ class KeyCodes {
         });
     }
 }
-
-/*automatic registration triggered for everything which has a data-key-code*/
-setTimeout(() => KeyCodes.initKeys(), 500);
 
