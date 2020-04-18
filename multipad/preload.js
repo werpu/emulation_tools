@@ -4,13 +4,16 @@
  * (this is a security barrier introduced in electron
  * a while ago)
  */
-const {DomQuery} = require("mona-dish");
+const {DomQuery, LazyStream, Stream, TagBuilder} = require("mona-dish");
 const {execFileSync} = require('child_process');
 const net = require('net');
 const path = require('path');
 
 
 window.DomQuery = DomQuery;
+window.Stream = Stream;
+window.LazyStream = LazyStream;
+window.TagBuilder = TagBuilder;
 window.execFileSync = execFileSync;
 window.net = net;
 window.path_ = path;

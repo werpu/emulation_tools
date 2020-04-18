@@ -1,4 +1,4 @@
-import {Processes} from "./es_helpers/processes.js";
+import {Processes} from "./shared/processes.js";
 
 const client = new net.Socket();
 

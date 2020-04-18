@@ -1,4 +1,5 @@
-import {registerMetaEventHandler, registerEventHandler} from "../remote_pipe.js";
+import {registerMetaEventHandler, registerEventHandler} from "../../remote_pipe.js";
+import {onStart} from "./init.js";
 
 export class KeyCodes {
     static KEY_ESC = "(EV_KEY), code 1 (KEY_ESC)";
@@ -135,6 +136,16 @@ export class KeyCodes {
                 registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
             }
         });
+
+
     }
 }
+
+/**
+ * init handler
+ */
+onStart(() => {
+    setTimeout(() => KeyCodes.initKeys(), 500);
+});
+
 
