@@ -26,6 +26,7 @@
     "node-process-windows": "0.0.2"
   },
   "dependencies": {
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "dgram": "^1.0.1"
   }
 }

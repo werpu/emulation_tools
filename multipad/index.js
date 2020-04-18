@@ -6,12 +6,6 @@
  */
 const {app, BrowserWindow, remote} = require('electron');
 const path = require('path');
-const arguments = process.argv;
-
-
-const isStringArgs =  arguments.length && typeof arguments[0] === 'string' || arguments[0] instanceof String;
-const system = isStringArgs && arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
-
 
 let _sharedObj = {prop1: "hi"};
 
@@ -19,6 +13,18 @@ Object.defineProperty(global, 'sharedObj', {
   get() { return _sharedObj },
   set(value) { _sharedObj = value }
 })
+
+require("./scripts/backend/udpreceiver.js");
+
+let theArgs = process.argv;
+
+
+
+const isStringArgs =  theArgs.length && typeof theArgs[0] === 'string' || theArgs[0] instanceof String;
+const system = isStringArgs && theArgs.length > 1 ? theArgs[theArgs.length - 1] : "coleco-1p";
+
+
+
 
 
 
