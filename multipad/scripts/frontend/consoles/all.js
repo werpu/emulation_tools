@@ -8,3 +8,5 @@ import {onStart} from "../es_helpers/init.js";
 import {LayerHandler} from "../es_helpers/layers.js";
 
 
+
+//fetching shared data alert(remote.getGlobal("sharedObj").prop1);

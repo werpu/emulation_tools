@@ -18,7 +18,7 @@ let isStringArgs =  arguments.length && typeof arguments[0] === 'string' || argu
 
 const system = isStringArgs && arguments.length > 1 ? arguments[arguments.length - 1] : "coleco-1p";
 
-
+global.sharedObj = {prop1: "hi"};
 /**
  * open a fake fullscreen window
  */

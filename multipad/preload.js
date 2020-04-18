@@ -8,7 +8,7 @@ const {DomQuery, LazyStream, Stream, TagBuilder} = require("mona-dish");
 const {execFileSync} = require('child_process');
 const net = require('net');
 const path = require('path');
-
+const { ipcRenderer, remote } = require('electron');
 
 window.DomQuery = DomQuery;
 window.Stream = Stream;
@@ -17,3 +17,4 @@ window.TagBuilder = TagBuilder;
 window.execFileSync = execFileSync;
 window.net = net;
 window.path_ = path;
+window.remote = remote;
