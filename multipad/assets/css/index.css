@@ -1,0 +1,36 @@
+.centercontent {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border-radius: 10px;
+    background-color: #5d4fb9;
+    border: 1px solid #3c3030;
+}
+
+.centercontent h2 {
+    text-align: center;
+    color: #e6cb45;
+}
+
+.animationholder {
+    width: 32px;
+    height: 32px;
+    position: absolute !important;
+    top: calc(50vh - 40px);
+    left: calc(50vw - 40px);
+    z-index: 10;
+}
+
+.terminal {
+    z-index: 1;
+    height: calc(100vh - 100px);
+    width: calc(100vw - 40px);
+    border-radius: 1px;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    overflow-y: auto;
+    color: #e6cb45;
+}

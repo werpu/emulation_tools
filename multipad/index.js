@@ -7,7 +7,10 @@
 const {app, BrowserWindow, remote} = require('electron');
 const path = require('path');
 
-let _sharedObj = {prop1: "hi"};
+let _sharedObj = {
+    receivers: {},
+    receiver: {}
+};
 
 Object.defineProperty(global, 'sharedObj', {
   get() { return _sharedObj },
@@ -23,7 +26,7 @@ let theArgs = process.argv;
 const isStringArgs =  theArgs.length && typeof theArgs[0] === 'string' || theArgs[0] instanceof String;
 const system = isStringArgs && theArgs.length > 1 ? theArgs[theArgs.length - 1] : "coleco-1p";
 
-
+global.sharedObj["initialSystem"] = system;
 
 
 
@@ -50,7 +53,9 @@ function createWindow() {
         nodeIntegration: true
 
     })
-    window.loadFile(path.join(app.getAppPath(),"html/"+system+'.html'));
+
+
+    window.loadFile(path.join(app.getAppPath(),"html/index.html"));
     //window.webContents.openDevTools();
 }
 

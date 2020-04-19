@@ -1,15 +1,24 @@
 import {Processes} from "./shared/processes.js";
 
+let global = remote.getGlobal("sharedObj");
+let rec = global ? global["receiver"] : false;
+
 const client = new net.Socket();
 
 export function connect() {
-    client.connect(9002, '10.0.1.50', function () {
+    if(!rec) {
+        return;
+    }
+    client.connect(rec.port, rec.ip, function () {
         console.log('Connected');
     });
 }
 
 
 export function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
+    if(!rec) {
+        return;
+    }
     DomQuery.byId(id).addEventListener("click", () => {
         focus(windowPattern);
 
@@ -32,6 +41,9 @@ export function registerEventHandler(id, id_evt, target, event, windowPattern, l
 }
 
 export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
+    if(!rec) {
+        return;
+    }
     DomQuery.byId(id).addEventListener("click", () => {
         focus(windowPattern);
 
