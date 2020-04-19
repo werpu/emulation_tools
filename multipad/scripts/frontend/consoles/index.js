@@ -13,7 +13,7 @@ let detectServer = () => {
 
         location.href = "./"+sharedObject["initialSystem"]+".html";
     } else {
-        DomQuery.querySelectorAll(".terminal").html("No server found, trying again in half a second");
+        DomQuery.querySelectorAll(".terminal").html("Searching for server");
         setTimeout(() => detectServer(), 500);
     }
 };

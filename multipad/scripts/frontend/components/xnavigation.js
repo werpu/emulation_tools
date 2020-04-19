@@ -1,7 +1,11 @@
-TagBuilder.withTagName("x-navigation")
-    .withMarkup("<button id='nav_c64' data-target='c64'>C64</button><button id='atari5200' data-target='atari5200'>Atari 5200</button><button id='coleco-1p' data-target='coleco-1p'>Colecovision</button>")
-    .withConnectedCallback(function () {
-        DomQuery.querySelectorAll("x-navigation button").addEventListener("click", (evt) => {
+class Xnavigation extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = "<button id='nav_c64' data-target='c64'>C64</button><button id='atari5200' data-target='atari5200'>Atari 5200</button><button id='coleco-1p' data-target='coleco-1p'>Colecovision</button>";
+    }
+
+    connectedCallback() {
+        DomQuery.byId(this).querySelectorAll("button").addEventListener("click", (evt) => {
             let target = evt.target.dataset["target"];
             location.href = target + '.html';
         }).each((item => {
@@ -10,7 +14,11 @@ TagBuilder.withTagName("x-navigation")
                 item.addClass("hidden");
             }
         }));
-    })
+    }
+}
+
+TagBuilder.withTagName("x-navigation")
+    .withClass(Xnavigation)
     .register();
 
 
