@@ -16,7 +16,7 @@ let detectServer = () => {
                 .first().value;
 
             location.href = "./" + sharedObject["initialSystem"] + ".html";
-        } else if (!saveResolve(() => Object.keys(receivers).length).orElse(0).value) {
+        } else if (!saveResolve(() => Object.keys(receivers).length).value) {
             DomQuery.querySelectorAll(".terminal").html("Searching for server");
             setTimeout(detectServer, 1000);
         }
