@@ -37,7 +37,6 @@ global.sharedObj["initialSystem"] = system;
 function createWindow() {
     window = new BrowserWindow({
         webPreferences: {
-
             preload: path.join(app.getAppPath(), 'preload.js')
         },
         /*raspberry pi screen size*/

@@ -1,15 +1,32 @@
-TagBuilder.withTagName("multiserver")
-    .withMarkup(`
-<div class='content-holder overlow-container hidden'></div>
-`)
-    .withConnectedCallback(function () {
+import {onStart} from "../es_helpers/init.js";
+
+/**
+ * multi server handling component
+ * which pops up whenever we detect more than one possible new server
+ * and let the user select which one we need
+ */
+class MultiServerSelection extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+                <h2>More than one server was detected</h2>
+                <div class='content-holder overflow-container'></div>
+        `
+    }
+
+
+    connectedCallback() {
         DomQuery.byId(this).addClass("hidden")
+        this.checkForReceivers();
+    }
+
+    checkForReceivers() {
         let sharedObject = remote.getGlobal("sharedObj");
         let receivers = sharedObject.receivers;
         if (receivers && Object.keys(receivers).length && Object.keys(receivers).length > 1) {
 
             let contentHolder = DomQuery.byId(this).querySelectorAll(".content-holder");
-            this.removeClass("hidden");
+            DomQuery.byId(this).removeClass("hidden");
             Stream.ofAssoc(receivers).each(keyVal => {
                 let key = keyVal[0];
                 let value = keyVal[1];
@@ -19,18 +36,34 @@ TagBuilder.withTagName("multiserver")
                 let item = `
                    <div class="line clickable" data-selected="${key}">
                         <span class="col ip">${ip}</span>
-                        <span>:</span>
+                        <span class="col">:</span>
                         <span class="col port">${port}</span>
                    </div>
                `;
                 contentHolder.innerHtml = contentHolder.innerHtml + item;
 
             });
-        }
 
-        contentHolder.querySelectorall(".clickable").addEventListener("click", (evt) => {
-            sharedObject.receiver = receivers[evt.target.attr("data-selected").value];
-            location.href = "./"+sharedObject["initialSystem"]+".html";
-        });
-    })
-    .register();
+            setTimeout(() => {
+                contentHolder.querySelectorAll(".clickable").addEventListener("click", (evt) => {
+
+                    let target = DomQuery.byId(evt.target);
+                    target.addClass("selected");
+                    debugger;
+                    sharedObject.receiver = receivers[target.attr("data-selected").value];
+                    setTimeout(() => location.href = "./" + sharedObject["initialSystem"] + ".html", 500);
+
+                });
+            }, 200);
+
+
+        } else if (!receivers || !Object.keys(receivers).length) {
+            setTimeout(() => this.checkForReceivers(), 500);
+        }
+    }
+}
+
+
+onStart(() => TagBuilder.withTagName("x-multiserver")
+    .withClass(MultiServerSelection)
+    .register());

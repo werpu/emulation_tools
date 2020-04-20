@@ -86,3 +86,44 @@ x-navigation button.active {
 button.toggled {
     background-color: red;
 }
+
+
+x-multiserver {
+    display: block;
+    width: calc(100vw - 80px);
+    height: calc(100vh - 80px);
+    z-index: 30;
+    border-radius: 10px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 20px;
+    animation: ease-in 200ms;
+}
+
+x-multiserver .overflow-container {
+    overflow-y: auto;
+    height: calc(100vh - 200px);
+    border: 1px solid silver;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: block;
+}
+
+x-multiserver .line.clickable {
+    font-size: 1.5em;
+    background-color: #6f6ff3;
+    color: yellow;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px black, 2px 2px 5px black
+}
+
+x-multiserver .line.clickable.selected {
+    background-color: #6f6ff3;
+    color: yellow;
+    box-shadow: inset 2px 2px 5px black, 2px 2px 5px black;
+}

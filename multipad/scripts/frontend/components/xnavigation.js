@@ -1,4 +1,7 @@
-class Xnavigation extends HTMLElement {
+/**
+ * Navigational bar
+ */
+class NavigationBar extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = "<button id='nav_c64' data-target='c64'>C64</button><button id='atari5200' data-target='atari5200'>Atari 5200</button><button id='coleco-1p' data-target='coleco-1p'>Colecovision</button>";
@@ -18,7 +21,7 @@ class Xnavigation extends HTMLElement {
 }
 
 TagBuilder.withTagName("x-navigation")
-    .withClass(Xnavigation)
+    .withClass(NavigationBar)
     .register();
 
 

@@ -1,4 +1,4 @@
-import {registerMetaEventHandler, registerEventHandler} from "../../remote_pipe.js";
+import {registerMetaEventHandler, registerEventHandler} from "../shared/remote_pipe.js";
 import {onStart} from "./init.js";
 
 export class KeyCodes {

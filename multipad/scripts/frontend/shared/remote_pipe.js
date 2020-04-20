@@ -1,4 +1,4 @@
-import {Processes} from "./shared/processes.js";
+import {Processes} from "./processes.js";
 
 let global = remote.getGlobal("sharedObj");
 let rec = global ? global["receiver"] : false;

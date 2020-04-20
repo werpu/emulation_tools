@@ -25,8 +25,8 @@
 
 .terminal {
     z-index: 1;
-    height: calc(100vh - 100px);
-    width: calc(100vw - 40px);
+    height: calc(100vh - 159px);
+    width: calc(100vw - 80px);
     border-radius: 1px;
     position: absolute;
     top: 80px;
@@ -35,3 +35,4 @@
     color: #e6cb45;
     text-align: center;
 }
+
