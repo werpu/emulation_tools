@@ -1,5 +1,5 @@
 import {onStart} from "../es_helpers/init.js";
-import {defer} from "../shared/utils.js";
+import {defer, saveResolve} from "../shared/utils.js";
 
 /**
  * multi server handling component
@@ -23,26 +23,23 @@ class MultiServerSelection extends HTMLElement {
     checkForReceivers() {
         let sharedObject = remote.getGlobal("sharedObj");
         let receivers = sharedObject.receivers;
-        if (receivers && 1 < Object.keys(receivers).length) {
+        if (1 < saveResolve(() => Object.keys(receivers).length).orElse(-1).value) {
 
-            let contentHolder = DomQuery.byId(this).querySelectorAll(".content-holder");
-            DomQuery.byId(this).removeClass("hidden");
-            Stream.ofAssoc(receivers).each(keyVal => {
-                let key = keyVal[0];
+            let currNode = DomQuery.byId(this);
+            let contentHolder = currNode.querySelectorAll(".content-holder");
+            currNode.removeClass("hidden");
+
+            contentHolder.innerHtml = Stream.ofAssoc(receivers).map(keyVal => {
                 let value = keyVal[1];
-                let ip = value.ip;
-                let port = value.port;
 
-                let item = `
-                   <div class="line clickable" data-selected="${key}">
-                        <span class="col ip">${ip}</span>
+                return `
+                   <div class="line clickable" data-selected="${keyVal[0]}">
+                        <span class="col ip">${value.ip}</span>
                         <span class="col">:</span>
-                        <span class="col port">${port}</span>
+                        <span class="col port">${value.port}</span>
                    </div>
                `;
-                contentHolder.innerHtml = contentHolder.innerHtml + item;
-
-            });
+            }).reduce((item1, item2) => item1 + item2, contentHolder.innerHtml).value;
 
             defer(() => {
                 contentHolder.querySelectorAll(".clickable").addEventListener("click", (evt) => {
@@ -51,7 +48,7 @@ class MultiServerSelection extends HTMLElement {
                     target.addClass("selected");
 
                     sharedObject.receiver = receivers[target.attr("data-selected").value];
-                    setTimeout(() => location.href = "./" + sharedObject["initialSystem"] + ".html", 500);
+                    defer(() => location.href = "./" + sharedObject["initialSystem"] + ".html");
 
                 });
             }, 200);
