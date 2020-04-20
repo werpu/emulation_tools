@@ -9,4 +9,10 @@ export function onStart(func) {
     initHandlers.push(func);
 }
 
-setTimeout(() => Stream.of(...initHandlers).each(func => func()), 10);
+setTimeout(() => Stream.of(...initHandlers).each(func => {
+    try {
+        func()
+    } catch (e) {
+        console.log(e.message);
+    }
+}), 10);

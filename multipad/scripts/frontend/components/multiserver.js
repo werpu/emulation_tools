@@ -23,7 +23,7 @@ class MultiServerSelection extends HTMLElement {
     checkForReceivers() {
         let sharedObject = remote.getGlobal("sharedObj");
         let receivers = sharedObject.receivers;
-        if (receivers && Object.keys(receivers).length && Object.keys(receivers).length > 1) {
+        if (receivers && 1 < Object.keys(receivers).length) {
 
             let contentHolder = DomQuery.byId(this).querySelectorAll(".content-holder");
             DomQuery.byId(this).removeClass("hidden");
@@ -49,7 +49,7 @@ class MultiServerSelection extends HTMLElement {
 
                     let target = DomQuery.byId(evt.target);
                     target.addClass("selected");
-                    debugger;
+
                     sharedObject.receiver = receivers[target.attr("data-selected").value];
                     setTimeout(() => location.href = "./" + sharedObject["initialSystem"] + ".html", 500);
 
