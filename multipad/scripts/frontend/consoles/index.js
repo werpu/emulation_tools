@@ -1,8 +1,7 @@
 import "./all.js";
 import {onStart} from "../es_helpers/init.js";
 import "../components/multiserver.js";
-import {saveResolve} from "../shared/utils.js";
-
+import {defer, saveResolve} from "../shared/utils.js";
 
 let detectServer = () => {
     try {
@@ -18,12 +17,13 @@ let detectServer = () => {
             location.href = "./" + sharedObject["initialSystem"] + ".html";
         } else if (!saveResolve(() => Object.keys(receivers).length).value) {
             DomQuery.querySelectorAll(".terminal").html("Searching for server");
-            setTimeout(detectServer, 1000);
+            defer(detectServer);
         }
     } catch (e) {
         console.log(e.message);
-        setTimeout(detectServer, 1000);
+        defer(detectServer);
     }
 
 };
-onStart(() => setTimeout(detectServer, 1000));
+
+onStart(defer(detectServer));

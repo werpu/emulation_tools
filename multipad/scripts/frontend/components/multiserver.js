@@ -1,4 +1,5 @@
 import {onStart} from "../es_helpers/init.js";
+import {defer} from "../shared/utils.js";
 
 /**
  * multi server handling component
@@ -13,7 +14,6 @@ class MultiServerSelection extends HTMLElement {
                 <div class='content-holder overflow-container'></div>
         `
     }
-
 
     connectedCallback() {
         DomQuery.byId(this).addClass("hidden")
@@ -44,7 +44,7 @@ class MultiServerSelection extends HTMLElement {
 
             });
 
-            setTimeout(() => {
+            defer(() => {
                 contentHolder.querySelectorAll(".clickable").addEventListener("click", (evt) => {
 
                     let target = DomQuery.byId(evt.target);
@@ -58,7 +58,7 @@ class MultiServerSelection extends HTMLElement {
 
 
         } else if (!receivers || !Object.keys(receivers).length) {
-            setTimeout(() => this.checkForReceivers(), 500);
+            defer(() => this.checkForReceivers());
         }
     }
 }

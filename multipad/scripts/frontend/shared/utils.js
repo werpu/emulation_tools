@@ -7,3 +7,8 @@ export function saveResolve(resolver) {
         Optional.absent;
     }
 }
+
+export function defer(func, timeout) {
+    let finalTimeout = Optional.fromNullable(timeout || null);
+    setTimeout(func, finalTimeout.orElse(1000).value);
+}
