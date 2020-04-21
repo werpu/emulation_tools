@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Atari 5200</title>
+    <link rel="stylesheet" type="text/css" href="../assets/@fortawesome/fontawesome-free/css/all.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/shared.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/a5200.css">
-
 
 
 </head>
@@ -18,74 +18,22 @@
 <h1><img src="../assets/images/Atari_games_logo.svg" height="40"> Atari 5200</h1>
 
 <div class="wrap col_50">
-
-    <button class="equalHW" id="key1">1</button>
-    <button class="equalHW" id="key2">2</button>
-    <button class="equalHW" id="key3">3</button>
-
-    <button class="equalHW" id="key4">4</button>
-    <button class="equalHW" id="key5">5</button>
-    <button class="equalHW" id="key6">6</button>
-
-    <button class="equalHW" id="key7">7</button>
-    <button class="equalHW" id="key8">8</button>
-    <button class="equalHW" id="key9">9</button>
-
-    <button class="equalHW" id="key_asterisk">*</button>
-    <button class="equalHW" id="key0">0</button>
-    <button class="equalHW" id="key_hash">#</button>
+    <x-dialpad></x-dialpad>
 </div>
+
 
 <div class="wrap col_50 last">
 
-    <button class="equalHW" id="key21">Menu</button>
-    <button class="equalHW" id="key22">Pause</button>
-    <button class="equalHW" id="key23">FPS</button>
+    <button class="equalHW ft_sm" id="key21" data-key-code="KEY_F1">Menu</button>
+    <button class="equalHW ft_sm" id="key22" data-key-code="KEY_P"><span class="fa fa-pause m-r-5"></span> Pause</button>
+    <button class="equalHW ft_sm" id="key23" data-key-code="KEY_F3">FPS</button>
 
-    <button class="equalHW" id="key24">Reset</button>
-    <button class="equalHW" id="key25">Toggle FS</button>
-    <button class="equalHW" id="key26">Off</button>
+    <button class="equalHW ft_sm" id="key24" data-key-code="KEY_F5"><span class="fa fa-redo m-r-5"></span> Reset</button>
+    <button class="equalHW ft_sm" id="key25" data-key-code="KEY_F"><span class="fa fa-toggle-left m-r-5"></span> Toggle FS</button>
+    <button class="equalHW ft_sm" id="key26" data-key-code="KEY_F4" class=" fa fa-power-off">Off</button>
 
 
 </div>
-
-
 <script type="module" src="../scripts/frontend/consoles/all.js"></script>
-
-<script type="module" src="../scripts/frontend/shared/remote_pipe.js">
-
-    registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 79 (KEY_KP1), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 80 (KEY_KP2), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key3", "click", "keybd1", "(EV_KEY), code 81 (KEY_KP3), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key4", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP4), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key5", "click", "keybd1", "(EV_KEY), code 83 (KEY_KP5), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key6", "click", "keybd1", "(EV_KEY), code 77 (KEY_KP6), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key7", "click", "keybd1", "(EV_KEY), code 71 (KEY_KP7), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key8", "click", "keybd1", "(EV_KEY), code 72 (KEY_KP8), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key9", "click", "keybd1", "(EV_KEY), code 73 (KEY_KP9), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key0", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP0), value 1", ["retroarch","MAME","atari"]);
-    //registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 78 (KEY_KPPLUS), value 1", ["retroarch","MAME","atari"]);
-    //registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 51 (KEY_HASH), value 1", "MAME");
-    registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 55 (KEY_KPASTERISK), value 1", ["retroarch","MAME","atari"]);
-    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 13 (KEY_EQUAL), value 1", ["retroarch","MAME","atari"]);
-
-    //function keys, right
-    //f1 - Menu
-    registerEventHandler("key21", "click", "keybd1", "(EV_KEY), code 59 (KEY_F1), value 1", ["retroarch","MAME","atari"]);
-    //p - Pause
-    registerEventHandler("key22", "click", "keybd1", "(EV_KEY), code 25 (KEY_P), value 1", ["retroarch","MAME","atari"]);
-    // F3 - FPS
-    registerEventHandler("key23", "click", "keybd1", "(EV_KEY), code 61 (KEY_F3), value 1", ["retroarch","MAME","atari"]);
-    //reset - F4
-    registerEventHandler("key24", "click", "keybd1", "(EV_KEY), code 63 (KEY_F5), value 1", ["retroarch","MAME","atari"]);
-    //TOGGLE FS
-    registerEventHandler("key25", "click", "keybd1", "(EV_KEY), code 33 (KEY_F), value 1", ["retroarch","MAME","atari"]);
-    //off
-    registerEventHandler("key26", "click", "keybd1", "(EV_KEY), code 62 (KEY_F4), value 1", ["retroarch","MAME","atari"], false, kill_me);
-
-
-
-
-</script>
 </body>
 </html>

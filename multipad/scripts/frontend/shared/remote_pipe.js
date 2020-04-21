@@ -6,46 +6,89 @@ let rec = global ? global["receiver"] : false;
 const client = new net.Socket();
 
 export function connect() {
-    if(!rec) {
+    if (!rec) {
         return;
     }
+    client.setNoDelay(true);
     client.connect(rec.port, rec.ip, function () {
         console.log('Connected');
     });
+
 }
 
 
 export function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
-    if(!rec) {
+
+    if (!rec) {
         return;
     }
-    DomQuery.byId(id).addEventListener("click", () => {
-        focus(windowPattern);
 
+    function reconnect() {
         if (client.destroyed) {
             connect();
         }
+    }
+
+    let currDown;
+
+    function clickDown() {
+       //focus(windowPattern);
+        if(currDown) {
+            return;
+        }
+        console.log(currDown);
+
+        reconnect();
+
         client.write(["trigger_input",
             JSON.stringify({
                 to: target,
-                event: event,
+                event: event + ((currDown) ? ", value 2" : ", value 1"),
                 long: "" + !!longRun
             })
-        ].join(" "));
+        ].join("                                                                                                                "));
+
+        //client.end();
+        currDown = true;
+        setTimeout(() => focus(["multipad"]), 1000);
+    }
+
+    function clickUp() {
+        //focus(windowPattern);
+        if (!currDown) {
+            return;
+        }
+
+        reconnect();
+
+        client.write(["trigger_input",
+            JSON.stringify({
+                to: target,
+                event: event + ", value 0",
+                long: "" + !!longRun
+            })
+        ].join("                                                                                                             "));
+        //client.end();
         if (additionalExecute) {
             additionalExecute();
         }
-        setTimeout(() => focus(["multipad"]), 1000)
-    });
+
+        currDown = false;
+        setTimeout(() => focus(["multipad"]), 1000);
+    }
+
+    DomQuery.byId(id).addEventListener("mousedown",  clickDown);
+    DomQuery.byId(id).addEventListener("mouseup",    clickUp);
+    DomQuery.byId(id).addEventListener("mouseleave", clickUp);
 
 }
 
 export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
-    if(!rec) {
+    if (!rec) {
         return;
     }
     DomQuery.byId(id).addEventListener("click", () => {
-        focus(windowPattern);
+        //focus(windowPattern);
 
         if (client.destroyed) {
             connect();

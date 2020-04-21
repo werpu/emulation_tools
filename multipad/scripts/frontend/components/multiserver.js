@@ -61,6 +61,6 @@ class MultiServerSelection extends HTMLElement {
 }
 
 
-onStart(() => TagBuilder.withTagName("x-multiserver")
+TagBuilder.withTagName("x-multiserver")
     .withClass(MultiServerSelection)
-    .register());
+    .register();

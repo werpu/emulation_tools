@@ -1,16 +1,29 @@
-
-.logo_1 {
-    background-image: url("../images/379-3798428_browse-games-by-video-game-system-colecovision-logo.png");
+body {
+    background-image: url(../images/800px-ColecoVision.jpg);
+    background-size: contain;
     background-repeat: no-repeat;
-    display: block;
-    background-size: 220px 82px;
-    width: 220px;
-    height: 82px;
-    z-index: 1;
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    background-color: white;
+    background-position-y: 20px;
 }
+
+h1 {
+    font-size: 2.5em;
+    //background-color: red;
+    background: linear-gradient(90deg,#5d4fb9,yellow,red);;
+    -webkit-text-stroke: 1px black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    //text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    //text-shadow: 0px 1px 0px #202126;
+}
+
+.wrap {
+    margin-top: 20px;
+}
+
 
 .wrap.col_50 {
     width: calc(50vw - 20px);
@@ -21,4 +34,15 @@
     width: calc(50vw - 25px);
     padding-left: 10px;
     border-left: 1px dotted silver;
+}
+
+button {
+    background: #ececec;
+    color: black;
+    box-shadow: inset 0px 0px 0px 2px #06020377;
+    text-shadow: 0px 1px 0px #717173;
+}
+
+button:hover {
+    background: #ececec;
 }

@@ -1,5 +1,5 @@
 /**
- * Navigational bar
+ * Navigation^al bar
  */
 class NavigationBar extends HTMLElement {
     constructor() {

@@ -1,5 +1,6 @@
 import {registerMetaEventHandler, registerEventHandler} from "../shared/remote_pipe.js";
 import {onStart} from "./init.js";
+import {saveResolve} from "../shared/utils.js";
 
 export class KeyCodes {
     static KEY_ESC = "(EV_KEY), code 1 (KEY_ESC)";
@@ -129,11 +130,11 @@ export class KeyCodes {
         DomQuery.querySelectorAll("button[data-key-code]").each(item => {
 
             let keyCode = item.attr("data-key-code").value;
-            if(item.attr("data-meta-key-code")) {
+            if(saveResolve( () => item.attr("data-meta-key-code")).value) {
                 let meta = item.attr("data-meta-key-code").value;
-                registerMetaEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode] + ", value 1", KeyCodes[meta] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+                registerMetaEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode], KeyCodes[meta] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
             } else {
-                registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+                registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode], ["retroarch", "MAME", "atari", "mister"]);
             }
         });
 

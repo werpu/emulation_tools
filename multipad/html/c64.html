@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Atari 5200</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/shared.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/coleco-1p.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/c64.css">
+     <link rel="stylesheet" type="text/css" href="../assets/css/c64.css">
 
 
 </head>
@@ -37,16 +36,28 @@
 
 <div class="wrap">
 
-    <div class="d_block layer1">
+    <div class="d_block">
         <button class="equalHW" id="bspcd">&larr;</button>
-        <button class="equalHW" id="key1" data-key-code="KEY_1">1</button>
-        <button class="equalHW" id="key2" data-key-code="KEY_2">2</button>
-        <button class="equalHW" id="key3" data-key-code="KEY_3">3</button>
-        <button class="equalHW" id="key4" data-key-code="KEY_4">4</button>
-        <button class="equalHW" id="key5" data-key-code="KEY_5">5</button>
-        <button class="equalHW" id="key6" data-key-code="KEY_6">6</button>
-        <button class="equalHW" id="key7" data-key-code="KEY_7">7</button>
-        <button class="equalHW" id="key8" data-key-code="KEY_8">8</button>
+        <span class="layer1">
+            <button class="equalHW" id="key1" data-key-code="KEY_1">1</button>
+            <button class="equalHW" id="key2" data-key-code="KEY_2">2</button>
+            <button class="equalHW" id="key3" data-key-code="KEY_3">3</button>
+            <button class="equalHW" id="key4" data-key-code="KEY_4">4</button>
+            <button class="equalHW" id="key5" data-key-code="KEY_5">5</button>
+            <button class="equalHW" id="key6" data-key-code="KEY_6">6</button>
+            <button class="equalHW" id="key7" data-key-code="KEY_7">7</button>
+            <button class="equalHW" id="key8" data-key-code="KEY_8">8</button>
+        </span>
+        <span class="layer2 hidden">
+            <button class="equalHW" id="key_1shift" data-key-code="KEY_1" data-meta-key-code="KEY_SHIFT">!</button>
+            <button class="equalHW" id="key_2shift" data-key-code="KEY_2" data-meta-key-code="KEY_SHIFT">"</button>
+            <button class="equalHW" id="key_3shift" data-key-code="KEY_3" data-meta-key-code="KEY_SHIFT">#</button>
+            <button class="equalHW" id="key_4shift" data-key-code="KEY_4" data-meta-key-code="KEY_SHIFT">$</button>
+            <button class="equalHW" id="key_5shift" data-key-code="KEY_5" data-meta-key-code="KEY_SHIFT">%</button>
+            <button class="equalHW" id="key_6shift" data-key-code="KEY_6" data-meta-key-code="KEY_SHIFT">´</button>
+            <button class="equalHW" id="key_7shift" data-key-code="KEY_7" data-meta-key-code="KEY_SHIFT">(</button>
+            <button class="equalHW" id="key_8shift" data-key-code="KEY_8" data-meta-key-code="KEY_SHIFT">)</button>
+        </span>
         <button class="equalHW" id="key9" data-key-code="KEY_9">9</button>
         <button class="equalHW" id="key0" data-key-code="KEY_0">0</button>
         <button class="equalHW" id="keyplus" data-key-code="KEY_KPPLUS">+</button>
@@ -54,10 +65,7 @@
         <button class="equalHW" id="keypound" data-key-code="KEY_DOLLAR">&#163;</button>
         <button class="equalHW ft_sm" id="clr" data-key-code="KEY_HOME">CLR HOME</button>
     </div>
-    <div class="d-block layer2 hidden">
-        <button class="equalHW" id="key_1shift" data-key-code="KEY_1" data-meta-key-code="KEY_SHIFT">!</button>
 
-    </div>
 
     <!-- next row -->
     <div class="d_block">
@@ -66,7 +74,7 @@
         <button class="equalHW" id="keyw" data-key-code="KEY_W">W</button>
         <button class="equalHW" id="keye" data-key-code="KEY_E">E</button>
         <button class="equalHW" id="keyr" data-key-code="KEY_R">R</button>
-        <button class="equalHW" id="keyt" data-key-code="KEY_Q">T</button>
+        <button class="equalHW" id="keyt" data-key-code="KEY_T">T</button>
         <button class="equalHW" id="keyy" data-key-code="KEY_Y">Y</button>
         <button class="equalHW" id="keyu" data-key-code="KEY_U">U</button>
         <button class="equalHW" id="keyi" data-key-code="KEY_I">I</button>
@@ -109,28 +117,45 @@
         <button class="equalHW" id="keyb" data-key-code="KEY_B">B</button>
         <button class="equalHW" id="keyn" data-key-code="KEY_N">N</button>
         <button class="equalHW" id="keym" data-key-code="KEY_M">M</button>
-        <button class="equalHW" id="keycomma" data-key-code="KEY_COMMA">,</button>
-        <button class="equalHW" id="keydot" data-key-code="KEY_KPDOT">.</button>
-        <button class="equalHW" id="keyslash" data-key-code="KEY_SLASH">/</button>
+        <span class="layer1">
+            <button class="equalHW" id="keycomma" data-key-code="KEY_COMMA">,</button>
+            <button class="equalHW" id="keydot" data-key-code="KEY_KPDOT">.</button>
+            <button class="equalHW" id="keyslash" data-key-code="KEY_SLASH">/</button>
+        </span>
+        <span class="layer2 hidden">
+            <button class="equalHW" id="keycomma_shift" data-key-code="KEY_COMMA"
+                    data-meta-key-code="KEY_SHIFT">&lt;</button>
+            <button class="equalHW" id="keydot_shift" data-key-code="KEY_KPDOT"
+                    data-meta-key-code="KEY_SHIFT">&gt;</button>
+            <button class="equalHW" id="keyslash_shift" data-key-code="KEY_SLASH"
+                    data-meta-key-code="KEY_SHIFT">?</button>
+        </span>
+
         <button class="equalHW ft_sm" id="keyshift2" data-layer-from="layer1" data-layer-to="layer2">SHIFT</button>
-        <button class="equalHW" id="keyscsrup">&varr;</button>
-        <button class="equalHW" id="leftrght">&harr;</button>
+        <span class="layer1">
+            <button class="equalHW" id="keyscsrdn" data-key-code="KEY_DOWN">&darr;</button>
+            <button class="equalHW" id="kesrright" data-key-code="KEY_RIGHT">&rarr;</button>
+        </span>
+        <span class="layer2 hidden">
+            <button class="equalHW" id="keyscsleft" data-key-code="KEY_LEFT">&larr;</button>
+            <button class="equalHW" id="keyscsup" data-key-code="KEY_UP">&uarr;</button>
+        </span>
+
+
+        <!-- next row -->
+        <div class="d_block">
+            <button class="equalHW full" id="space">&nbsp;</button>
+        </div>
+
     </div>
 
-    <!-- next row -->
-    <div class="d_block">
-        <button class="equalHW full" id="space">&nbsp;</button>
+    <div class="wrap col_10 last">
+
+
     </div>
 
-</div>
 
-<div class="wrap col_10 last">
-
-
-</div>
-
-
-<script type="module" src="../scripts/frontend/consoles/all.js"></script>
+    <script type="module" src="../scripts/frontend/consoles/all.js"></script>
 
 
 </body>

@@ -12,9 +12,9 @@
     <x-navigation selected="coleco-1p"></x-navigation>
 </nav>
 
-<h1>Coleco Player 1</h1>
+<h1>Coleco Vision</h1>
 
-<div class="wrap">
+<div class="wrap col_50">
     <div class="logo_1"></div>
     <button class="equalHW" id="key1">1</button>
     <button class="equalHW" id="key2">2</button>
@@ -32,25 +32,10 @@
     <button class="equalHW" id="key0">0</button>
     <button class="equalHW" id="key_hash">#</button>
 </div>
+<div class="wrap col_50 last">
+</div>
 
 <script type="module" src="../scripts/frontend/consoles/all.js"></script>
-<script type="module" src="../scripts/frontend/shared/remote_pipe.js">
 
-
-    registerEventHandler("key1", "click", "keybd1", "(EV_KEY), code 79 (KEY_KP1), value 1", ["MAME"], true);
-    registerEventHandler("key2", "click", "keybd1", "(EV_KEY), code 80 (KEY_KP2), value 1", ["MAME"], true);
-    registerEventHandler("key3", "click", "keybd1", "(EV_KEY), code 81 (KEY_KP3), value 1", ["MAME"], true);
-    registerEventHandler("key4", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP4), value 1", ["MAME"], true);
-    registerEventHandler("key5", "click", "keybd1", "(EV_KEY), code 83 (KEY_KP5), value 1", ["MAME"], true);
-    registerEventHandler("key6", "click", "keybd1", "(EV_KEY), code 77 (KEY_KP6), value 1", ["MAME"], true);
-    registerEventHandler("key7", "click", "keybd1", "(EV_KEY), code 71 (KEY_KP7), value 1", ["MAME"], true);
-    registerEventHandler("key8", "click", "keybd1", "(EV_KEY), code 72 (KEY_KP8), value 1", ["MAME"], true);
-    registerEventHandler("key9", "click", "keybd1", "(EV_KEY), code 73 (KEY_KP9), value 1", ["MAME"], true);
-    registerEventHandler("key0", "click", "keybd1", "(EV_KEY), code 82 (KEY_KP0), value 1", ["MAME"], true);
-    registerEventHandler("key_asterisk", "click", "keybd1", "(EV_KEY), code 55 (KEY_KPASTERISK), value 1", ["MAME"], true);
-    //registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 51 (KEY_HASH), value 1", "MAME");
-    registerEventHandler("key_hash", "click", "keybd1", "(EV_KEY), code 74 (KEY_KPMINUS), value 1", ["MAME"], true);
-
-</script>
 </body>
 </html>
