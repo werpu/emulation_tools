@@ -9,12 +9,17 @@ h1 {
     color: #990a1e;
     font-size: 60px;
     padding-left: 20px;
+
+
+    position: absolute;
+    top: -40px;
+    right: 20px;
 }
 
 .wrap {
     display: block;
     width: calc(100vw - 20px);
-    height: calc(100vh - 200px);
+    height: calc(100vh - 80px);
 }
 
 .ft_sm {
