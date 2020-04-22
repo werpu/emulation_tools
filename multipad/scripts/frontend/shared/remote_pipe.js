@@ -1,56 +1,79 @@
 import {Processes} from "./processes.js";
+import {saveResolve} from "./utils.js";
 
-let global = remote.getGlobal("sharedObj");
-let rec = global ? global["receiver"] : false;
-
-const client = new net.Socket();
-
-export function connect() {
-    if (!rec) {
-        return;
+/**
+ * remote control client
+ * this docks onto a running
+ * server and sends remotely keystroke events
+ */
+class RemoteControlClient {
+    constructor() {
+        this.global = remote.getGlobal("sharedObj");
+        this.rec = saveResolve(() => this.global["receiver"]).orElse(false).value;
+        this.client = new net.Socket();
+        this.connect();
     }
-    client.setNoDelay(true);
-    client.connect(rec.port, rec.ip, function () {
-        console.log('Connected');
-    });
+
+    connect() {
+        if (!this.rec) {
+            return;
+        }
+        this.client.setNoDelay(true);
+        this.client.connect(this.rec.port, this.rec.ip, function () {
+            console.log('Connected');
+        });
+    }
+
+    sendKeyboardEvent(target, evt, longRun) {
+        this.reconnect();
+        this.client.write(["trigger_input",
+            JSON.stringify({
+                to: target,
+                event: evt,
+                long: "" + !!longRun
+            })
+        ].join(" "));
+    }
+
+    reconnect() {
+        if (this.client.destroyed) {
+            this.connect();
+        }
+    }
+
+    get hasRec() {
+        return !!this.rec;
+    }
 
 }
 
+let remoteKey = new RemoteControlClient();
+let focusHandler = null;
 
 export function registerEventHandler(id, id_evt, target, event, windowPattern, longRun, additionalExecute) {
 
-    if (!rec) {
+    if (!remoteKey.hasRec) {
         return;
     }
 
-    function reconnect() {
-        if (client.destroyed) {
-            connect();
-        }
-    }
 
     let currDown;
 
     function clickDown() {
-       //focus(windowPattern);
-        if(currDown) {
+        //focus(windowPattern);
+        if (currDown) {
             return;
         }
-        console.log(currDown);
 
-        reconnect();
-
-        client.write(["trigger_input",
-            JSON.stringify({
-                to: target,
-                event: event + ((currDown) ? ", value 2" : ", value 1"),
-                long: "" + !!longRun
-            })
-        ].join("                                                                                                                "));
-
-        //client.end();
+        remoteKey.sendKeyboardEvent(target, (event + ((currDown) ? ", value 2" : ", value 1")), longRun);
         currDown = true;
-        setTimeout(() => focus(["multipad"]), 1000);
+        if (focusHandler) {
+            clearTimeout(focusHandler);
+        }
+        focusHandler = setTimeout(() => {
+            focus(["multipad"]);
+            focusHandler = null;
+        }, 1000);
     }
 
     function clickUp() {
@@ -59,59 +82,81 @@ export function registerEventHandler(id, id_evt, target, event, windowPattern, l
             return;
         }
 
-        reconnect();
+        remoteKey.sendKeyboardEvent(target, event + ", value 0", longRun);
 
-        client.write(["trigger_input",
-            JSON.stringify({
-                to: target,
-                event: event + ", value 0",
-                long: "" + !!longRun
-            })
-        ].join("                                                                                                             "));
-        //client.end();
         if (additionalExecute) {
             additionalExecute();
         }
 
         currDown = false;
-        setTimeout(() => focus(["multipad"]), 1000);
+        if (focusHandler) {
+            clearTimeout(focusHandler);
+        }
+        setTimeout(() => {
+            focus(["multipad"]);
+            focusHandler = null;
+        }, 1000);
     }
 
-    DomQuery.byId(id).addEventListener("mousedown",  clickDown);
-    DomQuery.byId(id).addEventListener("mouseup",    clickUp);
+    DomQuery.byId(id).addEventListener("mousedown", clickDown);
+    DomQuery.byId(id).addEventListener("mouseup", clickUp);
     DomQuery.byId(id).addEventListener("mouseleave", clickUp);
 
 }
 
 export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, windowPattern, longRun, additionalExecute) {
-    if (!rec) {
+    if (!remoteKey.hasRec) {
         return;
     }
-    DomQuery.byId(id).addEventListener("click", () => {
-        //focus(windowPattern);
 
-        if (client.destroyed) {
-            connect();
+    let currDown;
+
+
+    function clickDown() {
+
+        if (currDown) {
+            return;
         }
-        client.write(["trigger_input",
-            JSON.stringify({
-                to: target,
-                event: event,
-                long: "" + !!longRun
-            })
-        ].join(" "));
-        client.write(["trigger_input",
-            JSON.stringify({
-                to: target,
-                event: metaEvent,
-                long: "" + !!longRun
-            })
-        ].join(" "));
+
+        remoteKey.sendKeyboardEvent(target, metaEvent + ((currDown) ? ", value 2" : ", value 1"), longRun);
+        remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun);
+        currDown = true;
+        if (focusHandler) {
+            clearTimeout(focusHandler);
+        }
+        setTimeout(() => {
+            focus(["multipad"]);
+            focusHandler = null;
+        }, 1000);
+    }
+
+    function clickUp() {
+        //focus(windowPattern);
+        if (!currDown) {
+            return;
+        }
+
+
+        remoteKey.sendKeyboardEvent(target, event + ", value 0", longRun);
+        remoteKey.sendKeyboardEvent(target, metaEvent + ", value 0", longRun);
+
         if (additionalExecute) {
             additionalExecute();
         }
-        setTimeout(() => focus(["multipad"]), 1000)
-    });
+
+        currDown = false;
+        if (focusHandler) {
+            clearTimeout(focusHandler);
+        }
+        setTimeout(() => {
+            focus(["multipad"]);
+            focusHandler = null;
+        }, 1000);
+    }
+
+    DomQuery.byId(id).addEventListener("mousedown", clickDown);
+    DomQuery.byId(id).addEventListener("mouseup", clickUp);
+    DomQuery.byId(id).addEventListener("mouseleave", clickUp);
 
 }
 
@@ -120,20 +165,20 @@ export function focus(windowNamePattern) {
     const processes = new Processes();
 
     windowNamePattern.forEach((name) => {
-        const proc = processes.processes.filter(proc => proc.program.toLowerCase().indexOf(name.toLowerCase()) != -1);
+        const proc = processes.processes.filter(proc => proc.program.toLowerCase().indexOf(name.toLowerCase()) !== -1);
         if (proc && proc.length) {
             proc[0].focus();
             return false;
         }
     });
 }
-
+/*
 export function kill_me() {
     const {exec} = require('child_process');
     exec("killall multipad")
 }
+*/
 
-connect();
 
 
 

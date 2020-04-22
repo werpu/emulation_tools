@@ -132,7 +132,7 @@ export class KeyCodes {
             let keyCode = item.attr("data-key-code").value;
             if(saveResolve( () => item.attr("data-meta-key-code")).value) {
                 let meta = item.attr("data-meta-key-code").value;
-                registerMetaEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode], KeyCodes[meta] + ", value 1", ["retroarch", "MAME", "atari", "mister"]);
+                registerMetaEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode], KeyCodes[meta], ["retroarch", "MAME", "atari", "mister"]);
             } else {
                 registerEventHandler(item.id.value, "click", "keybd1", KeyCodes[keyCode], ["retroarch", "MAME", "atari", "mister"]);
             }
