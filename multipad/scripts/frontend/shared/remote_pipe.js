@@ -157,7 +157,6 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
     DomQuery.byId(id).addEventListener("mousedown", clickDown);
     DomQuery.byId(id).addEventListener("mouseup", clickUp);
     DomQuery.byId(id).addEventListener("mouseleave", clickUp);
-
 }
 
 
