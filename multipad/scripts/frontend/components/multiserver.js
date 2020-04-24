@@ -48,7 +48,7 @@ class MultiServerSelection extends HTMLElement {
                     target.addClass("selected");
 
                     sharedObject.receiver = receivers[target.attr("data-selected").value];
-                    defer(() => location.href = "./" + sharedObject["initialSystem"] + ".html");
+                    defer(() => location.href = `./${sharedObject["initialSystem"]}.html`);
 
                 });
             }, 200);

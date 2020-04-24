@@ -5,7 +5,8 @@ import {defer, saveResolve} from "../shared/utils.js";
 
 let detectServer = () => {
     try {
-        DomQuery.querySelectorAll(".terminal").html("Detecing server");
+        DomQuery.querySelectorAll(".terminal")
+                .html("Detecing server");
         let sharedObject = remote.getGlobal("sharedObj");
         let receivers = saveResolve(() => sharedObject.receivers).value;
         if (saveResolve(() => Object.keys(receivers).length).value == 1) {

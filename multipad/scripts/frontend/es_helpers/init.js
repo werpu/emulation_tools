@@ -11,6 +11,4 @@ export function onStart(func) {
     initHandlers.push(func);
 }
 
-defer(() => Stream.of(...initHandlers).each(func => {
-    func()
-}), 10);
+defer(() => Stream.of(...initHandlers).each(func => func()), 10);

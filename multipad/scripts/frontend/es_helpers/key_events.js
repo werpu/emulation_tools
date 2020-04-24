@@ -1,6 +1,6 @@
 import {registerMetaEventHandler, registerEventHandler} from "../shared/remote_pipe.js";
 import {onStart} from "./init.js";
-import {saveResolve} from "../shared/utils.js";
+import {defer, saveResolve} from "../shared/utils.js";
 
 export class KeyCodes {
     static KEY_ESC = "(EV_KEY), code 1 (KEY_ESC)";
@@ -145,8 +145,6 @@ export class KeyCodes {
 /**
  * init handler
  */
-onStart(() => {
-    setTimeout(() => KeyCodes.initKeys(), 500);
-});
+onStart(() => defer(() => KeyCodes.initKeys(), 500));
 
 
