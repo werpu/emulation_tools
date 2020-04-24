@@ -2,9 +2,11 @@ Data
 dist/
 *.spec
 .idea/
-_install.sh
+multipad/_install.sh
 _setup.sh
 build/
 /tools/multipad/node_modules/
 /tools/multipad/release-builds/
 /history/history.db
+multipad/_install.sh
+/multipad/sftpbatch.txt

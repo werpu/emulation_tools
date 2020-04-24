@@ -1,51 +1,6 @@
+import {RemoteControlClient} from "./remote_control_client.js";
 import {Processes} from "./processes.js";
-import {saveResolve, defer} from "./utils.js";
-
-/**
- * remote control client
- * this docks onto a running
- * server and sends remotely keystroke events
- */
-class RemoteControlClient {
-    constructor() {
-        this.global = remote.getGlobal("sharedObj");
-        this.rec = saveResolve(() => this.global["receiver"]).orElse(false).value;
-        this.client = new net.Socket();
-        this.connect();
-    }
-
-    connect() {
-        if (!this.rec) {
-            return;
-        }
-        this.client.setNoDelay(true);
-        this.client.connect(this.rec.port, this.rec.ip, function () {
-            console.log('Connected');
-        });
-    }
-
-    sendKeyboardEvent(target, evt, longRun) {
-        this.reconnect();
-        this.client.write(["trigger_input",
-            JSON.stringify({
-                to: target,
-                event: evt,
-                long: "" + !!longRun
-            })
-        ].join(" "));
-    }
-
-    reconnect() {
-        if (this.client.destroyed) {
-            this.connect();
-        }
-    }
-
-    get hasRec() {
-        return !!this.rec;
-    }
-
-}
+import {defer} from "./utils.js";
 
 let remoteKey = new RemoteControlClient();
 let focusHandler = null;
@@ -98,9 +53,10 @@ export function registerEventHandler(id, id_evt, target, event, windowPattern, l
         }, 1000);
     }
 
-    DomQuery.byId(id).addEventListener("mousedown", clickDown);
-    DomQuery.byId(id).addEventListener("mouseup", clickUp);
-    DomQuery.byId(id).addEventListener("mouseleave", clickUp);
+    DomQuery.byId(id)
+        .addEventListener("touchstart", clickDown)
+        .addEventListener("touchend", clickUp)
+        .addEventListener("mouseleave", clickUp);
 
 }
 
@@ -112,7 +68,7 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
     let currDown;
 
 
-    async function clickDown() {
+    function clickDown() {
 
         if (currDown) {
             return;
@@ -122,7 +78,7 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
             remoteKey.sendKeyboardEvent(target, metaEvent + ((currDown) ? ", value 2" : ", value 1"), longRun);
             await defer(() => remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun), 10);
             currDown = true;
-         })();
+        })();
 
 
         if (focusHandler) {
@@ -159,9 +115,10 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
 
     }
 
-    DomQuery.byId(id).addEventListener("mousedown", clickDown);
-    DomQuery.byId(id).addEventListener("mouseup", clickUp);
-    DomQuery.byId(id).addEventListener("mouseleave", clickUp);
+    DomQuery.byId(id)
+        .addEventListener("touchstart", clickDown)
+        .addEventListener("touchend", clickUp)
+        .addEventListener("mouseleave", clickUp);
 }
 
 
@@ -176,6 +133,7 @@ export function focus(windowNamePattern) {
         }
     });
 }
+
 /*
 export function kill_me() {
     const {exec} = require('child_process');

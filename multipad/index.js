@@ -49,11 +49,13 @@ function createWindow() {
         //frame: false,
         autoHideMenuBar: true,
         titleBarStyle: "hidden",
+        fullScreen: true,
         nodeIntegration: true
 
     })
 
-
+    window.setFullScreenable(true);
+    window.setFullScreen(true);
     window.loadFile(path.join(app.getAppPath(),"html/index.html"));
     //window.webContents.openDevTools();
 }

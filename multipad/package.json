@@ -19,10 +19,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lodash": "^4.17.15",
+    "babel-register": "^6.26.0",
+    "electron": "^8.2.3",
     "electron-installer-debian": "^3.0.0",
     "electron-packager": "^14.2.1",
-    "babel-register": "^6.26.0"
+    "lodash": "^4.17.15"
   },
   "dependencies": {
     "lodash": "^4.17.15",
