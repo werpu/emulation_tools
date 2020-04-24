@@ -1,5 +1,5 @@
 import {Processes} from "./processes.js";
-import {saveResolve} from "./utils.js";
+import {saveResolve, defer} from "./utils.js";
 
 /**
  * remote control client
@@ -112,19 +112,23 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
     let currDown;
 
 
-    function clickDown() {
+    async function clickDown() {
 
         if (currDown) {
             return;
         }
 
-        remoteKey.sendKeyboardEvent(target, metaEvent + ((currDown) ? ", value 2" : ", value 1"), longRun);
-        remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun);
-        currDown = true;
+        (async () => {
+            remoteKey.sendKeyboardEvent(target, metaEvent + ((currDown) ? ", value 2" : ", value 1"), longRun);
+            await defer(() => remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun), 10);
+            currDown = true;
+         })();
+
+
         if (focusHandler) {
             clearTimeout(focusHandler);
         }
-        setTimeout(() => {
+        return defer(() => {
             focus(["multipad"]);
             focusHandler = null;
         }, 1000);
@@ -135,23 +139,24 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
         if (!currDown) {
             return;
         }
+        (async () => {
+            await defer(() => remoteKey.sendKeyboardEvent(target, event + ", value 0", longRun), 20);
+            await defer(() => remoteKey.sendKeyboardEvent(target, metaEvent + ", value 0", longRun), 10);
+            currDown = false;
 
+            if (additionalExecute) {
+                additionalExecute();
+            }
 
-        remoteKey.sendKeyboardEvent(target, event + ", value 0", longRun);
-        remoteKey.sendKeyboardEvent(target, metaEvent + ", value 0", longRun);
+            if (focusHandler) {
+                clearTimeout(focusHandler);
+            }
+            return defer(() => {
+                focus(["multipad"]);
+                focusHandler = null;
+            }, 1000);
+        })();
 
-        if (additionalExecute) {
-            additionalExecute();
-        }
-
-        currDown = false;
-        if (focusHandler) {
-            clearTimeout(focusHandler);
-        }
-        setTimeout(() => {
-            focus(["multipad"]);
-            focusHandler = null;
-        }, 1000);
     }
 
     DomQuery.byId(id).addEventListener("mousedown", clickDown);
