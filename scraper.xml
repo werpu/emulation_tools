@@ -4764,7 +4764,7 @@ Despite the drastic changes from the original, the game still retains the sound 
 		<releasedate>19940101</releasedate>
 		<developer>Augenblick</developer>
 		<publisher>F1 Licenceware</publisher>
-		<genre>Maze, Pacman, Singlescreen</genre>
+		<genre>Maze, Smallerstuff, Singlescreen</genre>
 		<players>2</players>
 		<image>./boxart/ClassicPucman_v1.0.png</image>
 		<marquee>./wheel/ClassicPucman_v1.0.png</marquee>
@@ -5500,7 +5500,7 @@ The game features 100 levels, a level editor (can be also used to change the exi
 		<releasedate>19870101</releasedate>
 		<developer>Anco</developer>
 		<publisher>Anco Software Ltd.</publisher>
-		<genre>Maze, Pacman, Sideways, Singlescreen</genre>
+		<genre>Maze, Smallerstuff, Sideways, Singlescreen</genre>
 		<players>2</players>
 		<image>./boxart/CruncherFactory_v1.1.png</image>
 		<marquee>./wheel/CruncherFactory_v1.1.png</marquee>
@@ -6297,13 +6297,13 @@ Great game for killing a few minutes... Or... Minutes quickly become hours...</d
 	</game>
 	<game>
 		<path>./DeluxePacman_v1.0_AGA.lha</path>
-		<name>Deluxe Pacman</name>
+		<name>Deluxe Smallerstuff</name>
 		<rating />
 		<desc>Commodore Amiga game</desc>
 		<releasedate>19950101</releasedate>
 		<developer>Edgar M. Vigdal</developer>
 		<publisher>Shareware</publisher>
-		<genre>Maze, Pacman, Singlescreen, Topdown</genre>
+		<genre>Maze, Smallerstuff, Singlescreen, Topdown</genre>
 		<players>2</players>
 		<image>./boxart/DeluxePacman_v1.0_AGA.png</image>
 		<marquee>./wheel/DeluxePacman_v1.0_AGA.png</marquee>
@@ -14863,7 +14863,7 @@ There are sixteen rounds to complete, with four trips each. During each round, h
 		<releasedate>19890101</releasedate>
 		<developer>Namco</developer>
 		<publisher>Grandslam</publisher>
-		<genre>Arcade, Horizontal, Pacman, Platform</genre>
+		<genre>Arcade, Horizontal, Smallerstuff, Platform</genre>
 		<players>2</players>
 		<image>./boxart/PacLand_v1.1_0023.png</image>
 		<marquee>./wheel/PacLand_v1.1_0023.png</marquee>
@@ -14877,7 +14877,7 @@ There are sixteen rounds to complete, with four trips each. During each round, h
 		<releasedate>19880101</releasedate>
 		<developer>Grandslam</developer>
 		<publisher>Namco</publisher>
-		<genre>Arcade, Isometric, Maze, Multidirectional, Pacman</genre>
+		<genre>Arcade, Isometric, Maze, Multidirectional, Smallerstuff</genre>
 		<players>1</players>
 		<image>./boxart/PacMania_v1.0_1117.png</image>
 		<marquee>./wheel/PacMania_v1.0_1117.png</marquee>
@@ -15683,7 +15683,7 @@ Once a piece reaches 25 Wisdom Points, it can mutate up a skill level - this mak
 		<releasedate>19950101</releasedate>
 		<developer>Arcana Software Limited</developer>
 		<publisher>Arcana Software Limited</publisher>
-		<genre>Maze, Multidirectional, Pacman, Topdown</genre>
+		<genre>Maze, Multidirectional, Smallerstuff, Topdown</genre>
 		<players>4+</players>
 		<image>./boxart/Power_v1.1_1284.png</image>
 		<marquee>./wheel/Power_v1.1_1284.png</marquee>
@@ -23626,7 +23626,7 @@ Zombie Apocalypse II is rather simplistic and quite repetitive, yet it's also su
 		<name>Zoom!</name>
 		<image>./boxart/Zoom_v1.0a_1910.png</image>
 		<rating />
-		<desc>Zoom! is an arcade style puzzle game. Your character Zoomer (a Pacman lookalike with arms &amp; legs) must trace the outline of the squares on the game board to light them up. Points are awarded when full squares are formed, although the game also displays how many lines must still be completed. You proceed to the next level when all the squares have been lit up.</desc>
+		<desc>Zoom! is an arcade style puzzle game. Your character Zoomer (a Smallerstuff lookalike with arms &amp; legs) must trace the outline of the squares on the game board to light them up. Points are awarded when full squares are formed, although the game also displays how many lines must still be completed. You proceed to the next level when all the squares have been lit up.</desc>
 		<releasedate />
 		<developer>A1200</developer>
 		<publisher />

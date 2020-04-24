@@ -1,6 +1,8 @@
 import "./all.js";
+
 import {onStart} from "../es_helpers/init.js";
 import "../components/multiserver.js";
+import "../components/smallerstuff.js";
 import {defer, saveResolve} from "../shared/utils.js";
 
 let detectServer = () => {

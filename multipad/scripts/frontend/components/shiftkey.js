@@ -1,4 +1,4 @@
-class Shiftbutton extends HTMLElement {
+class ShiftKey extends HTMLElement {
 
     observedAttrs = ["l1_code",
         "l1_d_value",
@@ -22,6 +22,6 @@ class Shiftbutton extends HTMLElement {
     }
 }
 
-TagBuilder.withTagName("x-button")
-    .withClass(Shiftbutton)
+TagBuilder.withTagName("x-key")
+    .withClass(ShiftKey)
     .register();
