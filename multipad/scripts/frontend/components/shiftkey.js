@@ -20,6 +20,11 @@ class ShiftKey extends HTMLElement {
             `<button class="level4 hidden" id="${this.the_id + '_l4'}" data-key-code="${data.l4_code || data.l1_code}">${this.l4_d_value || this.l1_d_value}</button>`,
         ]
     }
+
+    connectedCallback() {
+
+    }
+
 }
 
 TagBuilder.withTagName("x-key")

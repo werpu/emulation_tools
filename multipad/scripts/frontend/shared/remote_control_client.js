@@ -8,17 +8,17 @@ import {saveResolve} from "./utils.js";
 export class RemoteControlClient {
     constructor() {
         this.global = remote.getGlobal("sharedObj");
-        this.rec = saveResolve(() => this.global["receiver"]).orElse(false).value;
+        this.connectionData = saveResolve(() => this.global["receiver"]).orElse(false).value;
         this.client = new net.Socket();
         this.connect();
     }
 
     connect() {
-        if (!this.rec) {
+        if (!this.connectionData) {
             return;
         }
         this.client.setNoDelay(true);
-        this.client.connect(this.rec.port, this.rec.ip, function () {
+        this.client.connect(this.connectionData.port, this.connectionData.ip, function () {
             console.log('Connected');
         });
     }
@@ -40,8 +40,8 @@ export class RemoteControlClient {
         }
     }
 
-    get hasRec() {
-        return !!this.rec;
+    get hasConnectionData() {
+        return !!this.connectionData;
     }
 
 }
