@@ -10,6 +10,9 @@ export class LayerHandler {
 
         currentLayerEl.addClass("hidden");
         nextLayerEl.removeClass("hidden");
+        DomQuery.querySelectorAll("body x-key").dispatchEvent(new CustomEvent("layerchange", {
+            detail: { layer: nextLayer }
+        }));
     }
 
     /**

@@ -1,6 +1,8 @@
 /**
  * Navigation^al bar
  */
+import {defer} from "../shared/utils.js";
+
 class NavigationBar extends HTMLElement {
     constructor() {
         super();
@@ -8,15 +10,17 @@ class NavigationBar extends HTMLElement {
     }
 
     connectedCallback() {
-        DomQuery.byId(this).querySelectorAll("button").addEventListener("click", (evt) => {
-            let target = evt.target.dataset["target"];
-            location.href = target + '.html';
-        }).each((item => {
-            item.removeClass("hidden");
-            if (item.attr("data-target").value == DomQuery.byId(this).attr("selected").value) {
-                item.addClass("hidden");
-            }
-        }));
+        defer(() => {
+            DomQuery.byId(this).querySelectorAll("button").addEventListener("click", (evt) => {
+                let target = evt.target.dataset["target"];
+                location.href = target + '.html';
+            }).each((item => {
+                item.removeClass("hidden");
+                if (item.attr("data-target").value == DomQuery.byId(this).attr("selected").value) {
+                    item.addClass("hidden");
+                }
+            }));
+        });
     }
 }
 

@@ -26,9 +26,10 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
-    "node-process-windows": "0.0.2",
     "dgram": "^1.0.1",
-    "mona-dish": "^0.15.5"
+    "lodash": "^4.17.15",
+    "mona-dish": "^0.16.3",
+    "node-process-windows": "0.0.2",
+    "npm-check-updates": "^4.1.2"
   }
 }
