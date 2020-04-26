@@ -26,8 +26,6 @@ export class LayerHandler {
      */
     static registerLayerSwitch(id, fromLayer, toLayer, isStatic) {
         let element = DomQuery.byId(id);
-        let toLayerEl = DomQuery.querySelectorAll("." + toLayer);
-        let toLayerExists = !!toLayerEl.length;
         let shifted = false;
 
         if (isStatic) {
@@ -36,7 +34,7 @@ export class LayerHandler {
                     shifted = true;
                     DomQuery.byId(el.target).addClass("toggled");
                     LayerHandler.toggleLayers(fromLayer, toLayer);
-                } else if (toLayerExists) {
+                } else {
                     shifted = false;
                     DomQuery.byId(el.target).removeClass("toggled");
                     LayerHandler.toggleLayers(toLayer, fromLayer);
@@ -45,11 +43,15 @@ export class LayerHandler {
         } else {
             element.addEventListener("mousedown", (el) => {
                 shifted = true;
-
                 LayerHandler.toggleLayers(fromLayer, toLayer);
             });
 
             element.addEventListener("mouseup", () => {
+                shifted = false;
+                LayerHandler.toggleLayers(toLayer, fromLayer);
+            });
+
+            element.addEventListener("mouseLeave", () => {
                 shifted = false;
                 LayerHandler.toggleLayers(toLayer, fromLayer);
             });
