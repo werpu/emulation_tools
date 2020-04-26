@@ -47,7 +47,7 @@ export function registerEventHandler(id, id_evt, target, event, windowPattern, l
         if (focusHandler) {
             clearTimeout(focusHandler);
         }
-        setTimeout(() => {
+        focusHandler = setTimeout(() => {
             focus(["multipad"]);
             focusHandler = null;
         }, 1000);
@@ -134,14 +134,6 @@ export function focus(windowNamePattern) {
         }
     });
 }
-
-/*
-export function kill_me() {
-    const {exec} = require('child_process');
-    exec("killall multipad")
-}
-*/
-
 
 
 

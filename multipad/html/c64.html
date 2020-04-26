@@ -20,10 +20,10 @@
                 style="width: 6em; margin-right: 20px;">Load Run
         </button>
 
-        <x-key id="keyf1" l1-code="KEY_F1" l1-value="F1" l2-code="KEY_F2"  l2-value="F2"></x-key>
-        <x-key id="keyf3" l1-code="KEY_F3" l1-value="F3" l2-code="KEY_F4"  l2-value="F4"></x-key>
-        <x-key id="keyf5" l1-code="KEY_F5" l1-value="F5" l2-code="KEY_F6"  l2-value="F6"></x-key>
-        <x-key id="keyf7" l1-code="KEY_F7" l1-value="F7" l2-code="KEY_F8"  l2-value="F8"></x-key>
+        <x-key id="keyf1" l1-code="KEY_F1" l1-value="F1" l2-code="KEY_F2" l2-value="F2"></x-key>
+        <x-key id="keyf3" l1-code="KEY_F3" l1-value="F3" l2-code="KEY_F4" l2-value="F4"></x-key>
+        <x-key id="keyf5" l1-code="KEY_F5" l1-value="F5" l2-code="KEY_F6" l2-value="F6"></x-key>
+        <x-key id="keyf7" l1-code="KEY_F7" l1-value="F7" l2-code="KEY_F8" l2-value="F8"></x-key>
 
     </div>
 
@@ -34,26 +34,17 @@
 
     <div class="d_block">
         <button class="equalHW" id="bspcd">&larr;</button>
-        <span class="layer1">
-            <button class="equalHW" id="key1" data-key-code="KEY_1">1</button>
-            <button class="equalHW" id="key2" data-key-code="KEY_2">2</button>
-            <button class="equalHW" id="key3" data-key-code="KEY_3">3</button>
-            <button class="equalHW" id="key4" data-key-code="KEY_4">4</button>
-            <button class="equalHW" id="key5" data-key-code="KEY_5">5</button>
-            <button class="equalHW" id="key6" data-key-code="KEY_6">6</button>
-            <button class="equalHW" id="key7" data-key-code="KEY_7">7</button>
-            <button class="equalHW" id="key8" data-key-code="KEY_8">8</button>
-        </span>
-        <span class="layer2 hidden">
-            <button class="equalHW" id="key_1shift" data-key-code="KEY_1" data-meta-key-code="KEY_LEFTSHIFT">!</button>
-            <button class="equalHW" id="key_2shift" data-key-code="KEY_2" data-meta-key-code="KEY_LEFTSHIFT">"</button>
-            <button class="equalHW" id="key_3shift" data-key-code="KEY_3" data-meta-key-code="KEY_LEFTSHIFT">#</button>
-            <button class="equalHW" id="key_4shift" data-key-code="KEY_4" data-meta-key-code="KEY_LEFTSHIFT">$</button>
-            <button class="equalHW" id="key_5shift" data-key-code="KEY_5" data-meta-key-code="KEY_LEFTSHIFT">%</button>
-            <button class="equalHW" id="key_6shift" data-key-code="KEY_6" data-meta-key-code="KEY_LEFTSHIFT">´</button>
-            <button class="equalHW" id="key_7shift" data-key-code="KEY_7" data-meta-key-code="KEY_LEFTSHIFT">(</button>
-            <button class="equalHW" id="key_8shift" data-key-code="KEY_8" data-meta-key-code="KEY_LEFTSHIFT">)</button>
-        </span>
+
+        <x-key id="key1" l1-code="KEY_1" l1-value="1" l2-value="!"></x-key>
+        <x-key id="key2" l1-code="KEY_2" l1-value="2" l2-value='"'></x-key>
+        <x-key id="key3" l1-code="KEY_3" l1-value="3" l2-value="#"></x-key>
+        <x-key id="key4" l1-code="KEY_4" l1-value="4" l2-value="$"></x-key>
+        <x-key id="key5" l1-code="KEY_5" l1-value="5" l2-value="%"></x-key>
+        <x-key id="key6" l1-code="KEY_6" l1-value="6" l2-value="´"></x-key>
+        <x-key id="key7" l1-code="KEY_7" l1-value="7" l2-value="("></x-key>
+        <x-key id="key8" l1-code="KEY_8" l1-value="8" l2-value=")"></x-key>
+
+
         <button class="equalHW" id="key9" data-key-code="KEY_9">9</button>
         <button class="equalHW" id="key0" data-key-code="KEY_0">0</button>
         <button class="equalHW" id="keyplus" data-key-code="KEY_KPPLUS">+</button>
@@ -66,40 +57,20 @@
     <!-- next row -->
     <div class="d_block">
         <button class="equalHW ft_sm" id="inst" data-key-code="KEY_LEFTCTRL">CTRL</button>
-        <span class="layer1">
-            <button class="equalHW" id="keyq" data-key-code="KEY_Q">Q</button>
-            <button class="equalHW" id="keyw" data-key-code="KEY_W">W</button>
-            <button class="equalHW" id="keye" data-key-code="KEY_E">E</button>
-            <button class="equalHW" id="keyr" data-key-code="KEY_R">R</button>
-            <button class="equalHW" id="keyt" data-key-code="KEY_T">T</button>
-            <button class="equalHW" id="keyy" data-key-code="KEY_Y">Y</button>
-            <button class="equalHW" id="keyu" data-key-code="KEY_U">U</button>
-            <button class="equalHW" id="keyi" data-key-code="KEY_I">I</button>
-            <button class="equalHW" id="keyo" data-key-code="KEY_O">O</button>
-            <button class="equalHW" id="keyp" data-key-code="KEY_P">P</button>
+
+        <span>
+            <x-key id="keyq" l1-code="KEY_Q" l1-value="Q" l2-value="q"></x-key>
+            <x-key id="keyw" l1-code="KEY_W" l1-value="W" l2-value="w"></x-key>
+            <x-key id="keye" l1-code="KEY_E" l1-value="E" l2-value="e"></x-key>
+            <x-key id="keyr" l1-code="KEY_R" l1-value="R" l2-value="r"></x-key>
+            <x-key id="keyt" l1-code="KEY_T" l1-value="T" l2-value="t"></x-key>
+            <x-key id="keyy" l1-code="KEY_Y" l1-value="Y" l2-value="y"></x-key>
+            <x-key id="keyu" l1-code="KEY_U" l1-value="U" l2-value="u"></x-key>
+            <x-key id="keyi" l1-code="KEY_I" l1-value="I" l2-value="i"></x-key>
+            <x-key id="keyo" l1-code="KEY_O" l1-value="O" l2-value="o"></x-key>
+            <x-key id="keyp" l1-code="KEY_P" l1-value="P" l2-value="p"></x-key>
         </span>
-        <span class="layer2 hidden">
-            <button class="equalHW" id="keyq_shifted" data-key-code="KEY_Q"
-                    data-meta-key-code="KEY_LEFTSHIFT">q</button>
-            <button class="equalHW" id="keyw_shifted" data-key-code="KEY_W"
-                    data-meta-key-code="KEY_LEFTSHIFT">w</button>
-            <button class="equalHW" id="keye_shifted" data-key-code="KEY_E"
-                    data-meta-key-code="KEY_LEFTSHIFT">e</button>
-            <button class="equalHW" id="keyr_shifted" data-key-code="KEY_R"
-                    data-meta-key-code="KEY_LEFTSHIFT">r</button>
-            <button class="equalHW" id="keyt_shifted" data-key-code="KEY_T"
-                    data-meta-key-code="KEY_LEFTSHIFT">t</button>
-            <button class="equalHW" id="keyy_shifted" data-key-code="KEY_Y"
-                    data-meta-key-code="KEY_LEFTSHIFT">y</button>
-            <button class="equalHW" id="keyu_shifted" data-key-code="KEY_U"
-                    data-meta-key-code="KEY_LEFTSHIFT">u</button>
-            <button class="equalHW" id="keyi_shifted" data-key-code="KEY_I"
-                    data-meta-key-code="KEY_LEFTSHIFT">i</button>
-            <button class="equalHW" id="keyo_shifted" data-key-code="KEY_O"
-                    data-meta-key-code="KEY_LEFTSHIFT">o</button>
-            <button class="equalHW" id="keyp_shifted" data-key-code="KEY_P"
-                    data-meta-key-code="KEY_LEFTSHIFT">p</button>
-        </span>
+
         <button class="equalHW" id="key@">@</button>
         <button class="equalHW sm" id="key_asterisk" data-key-code="KP_ASTERISK">*</button>
         <button class="equalHW sm" id="keypipe" data-key-code="KEY_102ND">|</button>
@@ -113,28 +84,17 @@
         <button class="equalHW ft_sm" id="keyshiftlock" data-layer-from="layer1" data-layer-to="layer2"
                 data-layer-lock="true">SHIFT LOCK
         </button>
-        <span class="layer1">
-            <button class="equalHW" id="keya" data-key-code="KEY_A">A</button>
-            <button class="equalHW" id="keys" data-key-code="KEY_S">S</button>
-            <button class="equalHW" id="keyd" data-key-code="KEY_D">D</button>
-            <button class="equalHW" id="keyf" data-key-code="KEY_F">F</button>
-            <button class="equalHW" id="keyg" data-key-code="KEY_G">G</button>
-            <button class="equalHW" id="keyh" data-key-code="KEY_H">H</button>
-            <button class="equalHW" id="keyj" data-key-code="KEY_J">J</button>
-            <button class="equalHW" id="keyk" data-key-code="KEY_K">K</button>
-            <button class="equalHW" id="keyl" data-key-code="KEY_L">L</button>
-        </span>
-        <span class="layer2 hidden">
-            <button class="equalHW" id="keya_shifted" data-key-code="KEY_A">a</button>
-            <button class="equalHW" id="keys_shifted" data-key-code="KEY_S">s</button>
-            <button class="equalHW" id="keyd_shifted" data-key-code="KEY_D">d</button>
-            <button class="equalHW" id="keyf_shifted" data-key-code="KEY_F">f</button>
-            <button class="equalHW" id="keyg_shifted" data-key-code="KEY_G">g</button>
-            <button class="equalHW" id="keyh_shifted" data-key-code="KEY_H">h</button>
-            <button class="equalHW" id="keyj_shifted" data-key-code="KEY_J">j</button>
-            <button class="equalHW" id="keyk_shifted" data-key-code="KEY_K">k</button>
-            <button class="equalHW" id="keyl_shifted" data-key-code="KEY_L">l</button>
-        </span>
+
+        <x-key id="keya" l1-code="KEY_A" l1-value="A" l2-value="a"></x-key>
+        <x-key id="keys" l1-code="KEY_S" l1-value="S" l2-value="s"></x-key>
+        <x-key id="keyd" l1-code="KEY_D" l1-value="D" l2-value="d"></x-key>
+        <x-key id="keyf" l1-code="KEY_F" l1-value="F" l2-value="f"></x-key>
+        <x-key id="keyg" l1-code="KEY_G" l1-value="G" l2-value="g"></x-key>
+        <x-key id="keyh" l1-code="KEY_H" l1-value="H" l2-value="h"></x-key>
+        <x-key id="keyj" l1-code="KEY_J" l1-value="J" l2-value="j"></x-key>
+        <x-key id="keyk" l1-code="KEY_K" l1-value="K" l2-value="k"></x-key>
+        <x-key id="keyl" l1-code="KEY_L" l1-value="L" l2-value="l"></x-key>
+
 
         <button class="equalHW" id="key_dblpt" data-key-code="KEY_SEMICOLON">:</button>
         <button class="equalHW sm" id="key_commapt" data-key-code="KEY_GRAVE">;</button>
@@ -152,30 +112,18 @@
         <button class="equalHW" id="keyb" data-key-code="KEY_B">B</button>
         <button class="equalHW" id="keyn" data-key-code="KEY_N">N</button>
         <button class="equalHW" id="keym" data-key-code="KEY_M">M</button>
-        <span class="layer1">
-            <button class="equalHW" id="keycomma" data-key-code="KEY_COMMA">,</button>
-            <button class="equalHW" id="keydot" data-key-code="KEY_KPDOT">.</button>
-            <button class="equalHW" id="keyslash" data-key-code="KEY_SLASH">/</button>
-        </span>
-        <span class="layer2 hidden">
-            <button class="equalHW" id="keycomma_shift" data-key-code="KEY_COMMA"
-                    data-meta-key-code="KEY_LEFTSHIFT">&lt;</button>
-            <button class="equalHW" id="keydot_shift" data-key-code="KEY_KPDOT"
-                    data-meta-key-code="KEY_LEFTSHIFT">&gt;</button>
-            <button class="equalHW" id="keyslash_shift" data-key-code="KEY_SLASH"
-                    data-meta-key-code="KEY_LEFTSHIFT">?</button>
-        </span>
+
+        <x-key id="keycomma" l1-code="KEY_COMMA" l1-value="," l2-value="&lt;"></x-key>
+        <x-key id="keydot" l1-code="KEY_KPDOT" l1-value="." l2-value="&gt;"></x-key>
+        <x-key id="keyslash" l1-code="KEY_SLASH" l1-value="/" l2-value="?"></x-key>
+
 
         <button class="equalHW ft_sm" id="keyshift2" data-layer-from="layer1" data-layer-to="layer2">SHIFT</button>
-        <span class="layer1">
-            <button class="equalHW" id="keyscsrdn" data-key-code="KEY_DOWN">&darr;</button>
-            <button class="equalHW" id="kesrright" data-key-code="KEY_RIGHT">&rarr;</button>
-        </span>
-        <span class="layer2 hidden">
-            <button class="equalHW" id="keyscsleft" data-key-code="KEY_LEFT">&larr;</button>
-            <button class="equalHW" id="keyscsup" data-key-code="KEY_UP">&uarr;</button>
-        </span>
 
+        <x-key id="keyscsrdn" l1-code="KEY_DOWN" l1-value="&darr;" l2-code="KEY_LEFT"
+               l2-valu2="&larr;"></x-key>
+        <x-key id="kesrright" l1-code="KEY_RIGHT" l1-value="&rarr;" l2-code="KEY_UP"
+               l2-value="&uarr;"></x-key>
 
         <!-- next row -->
         <div class="d_block">
@@ -184,14 +132,8 @@
 
     </div>
 
-    <div class="wrap col_10 last">
-
-
-    </div>
-
-
     <script type="module" src="../scripts/frontend/consoles/all.js"></script>
 
-
+</div>
 </body>
 </html>
