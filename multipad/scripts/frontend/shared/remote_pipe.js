@@ -74,7 +74,7 @@ export function registerMetaEventHandler(id, id_evt, target, event, metaEvent, w
 
 
         remoteKey.sendKeyboardEvent(target, metaEvent + ((currDown) ? ", value 2" : ", value 1"), longRun);
-        remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun);
+        await defer(() => remoteKey.sendKeyboardEvent(target, event + ((currDown) ? ", value 2" : ", value 1"), longRun), 10);
         currDown = true;
 
         if (focusHandler) {
