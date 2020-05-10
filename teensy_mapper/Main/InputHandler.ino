@@ -123,6 +123,14 @@ boolean handleJoySignals(int ev_type, int value) {
     case ABS_RX:
       Joystick.Zrotate(value * 4);
       return true;
+
+    case ABS_PADDLE:
+      Joystick.sliderLeft(value);
+      return true;  
+
+    case ABS_PADDLE2:
+      Joystick.sliderRight(value);
+      return true;
   
     case SYN:
       Joystick.send_now();

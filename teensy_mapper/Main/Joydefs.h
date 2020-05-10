@@ -27,6 +27,10 @@
 
 #define ABS_RY 4
 #define ABS_RX 3
+
+#define ABS_PADDLE 5
+#define ABS_PADDLE_2 6
+
 #define INTERNAL_LED 13
 #define INPUT_START 127
 
