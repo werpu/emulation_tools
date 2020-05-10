@@ -1,5 +1,6 @@
 #include "Joydefs.h"
 #include "SerialStream.h"
+#include "XPaddle.h"
 
 SerialStream *strm;
 int led = 13;

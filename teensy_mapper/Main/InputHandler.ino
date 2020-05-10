@@ -1,4 +1,5 @@
 
+
 // the hid seems to expect different angle
 // values with x and y reverted
 // according to the jstest, need to investigate
@@ -7,6 +8,11 @@
 
 int oldXAngle = -1;
 int oldYAngle = -1;
+
+XPaddle* paddle1 = new XPaddle();
+
+
+
 
 int handleCornerConditions(int defaultVal) {
    if(oldYAngle == 0 && oldXAngle == 90) {
@@ -41,6 +47,8 @@ int yHatValueToAngle(int value) {
 
   return handleCornerConditions(oldYAngle);
 }
+
+
 
 void noop() {
   
@@ -124,21 +132,18 @@ boolean handleJoySignals(int ev_type, int value) {
       Joystick.Zrotate(value * 4);
       return true;
 
-    case ABS_PADDLE:
-      Joystick.sliderLeft(value);
-      return true;  
-
-    case ABS_PADDLE2:
-      Joystick.sliderRight(value);
-      return true;
-  
     case SYN:
       Joystick.send_now();
       return true;
   }
   return false;
 }
-
+/**
+* dual handling
+* mouse and paddle signals are translated both into abs and rel values
+* to cover both, spinners and pads (spinners are ev rel pads are ev abs with values between
+* 0 and 255 with the middle being 127)
+*/
 boolean handleMouseSignals(int ev_type, int value) {
     switch(ev_type) {
       case REL_X:
@@ -176,7 +181,7 @@ boolean handleMouseSignals(int ev_type, int value) {
 
 /**
  * central input output multiplexer
- * we simpoly check for valid inputs then move
+ * we simply check for valid inputs then move
  * the values in a proper combination into the attached
  * joystick
  */
