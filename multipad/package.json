@@ -23,11 +23,11 @@
     "electron": "^8.2.3",
     "electron-installer-debian": "^3.0.0",
     "electron-packager": "^14.2.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "dependencies": {
     "dgram": "^1.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mona-dish": "^0.16.3",
     "node-process-windows": "0.0.2",
     "npm-check-updates": "^4.1.2"
